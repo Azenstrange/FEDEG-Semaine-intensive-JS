@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d")
 
 config()
 function init() {
-
+  var player = new Player((width-32)/2, height - 2*32, 32, 32, 6);
 }
 function config() {
     canvas.width= width
@@ -15,7 +15,9 @@ function config() {
 function draw() {
 
 }
-
+function update() {
+    player.update();
+}
 class Player{
   constructor(x,y,h,w,life,s){
     this.x = x,
@@ -25,23 +27,8 @@ class Player{
     this.life = life,
     this.s = s
   }
-  mouvleft(){
-    if(x<490){
-    this.x += 10
+  update() {
+    if(input.isDown(KEYS.RIGHT)) this.x += this.speed;
+    if(input.isDown(KEYS.LEFT)) this.x -= this.speed;
   }
-  }
-  mouvright(){
-    if(x>10){
-    this.x -= 10
-  }
-  }
-}
-
-function inputHandeler() {
-  document.addEventListener("keydown", function() {
-    mouvleft()
-  })
-  document.addEventListener("keyup", function() {
-    mouvright()
-  })
 }
