@@ -71,3 +71,15 @@ div.life{
 .titleGame{
   color: #FFD700;
 }
+
+/*
+.starDesign, .starDesign_two{
+  height: 50px;
+  width: auto;
+}
+
+.starDesign_two{
+  display: flex;
+  justify-content: flex-end;
+}
+*/
