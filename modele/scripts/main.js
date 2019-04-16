@@ -29,6 +29,9 @@ class Player{
     player_style.style.left = this.h
   }
 }
+
+
+
 const player = new Player(right_player, left_player, top_player, bot_player, 6);
 config()
 function init() {
