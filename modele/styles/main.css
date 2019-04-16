@@ -1,21 +1,16 @@
-/*@font-face
-{
-	font-family: "Press Start 2P";
-	font-weight: normal;
-	src: url("press_start_2p.ttf");
-} 
+@import url(//db.onlinewebfonts.com/c/a720be397d5933621aa9d875d9bec0ce?family=Strasua);
 
-@font-face
-{
-	font-family: "Strasua";
-	font-weight: normal;
-	src: url("strasua.ttf");
-} */
+@font-face {font-family: "Strasua";
+    src: url("//db.onlinewebfonts.com/t/a720be397d5933621aa9d875d9bec0ce.eot");
+    src: url("//db.onlinewebfonts.com/t/a720be397d5933621aa9d875d9bec0ce.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/a720be397d5933621aa9d875d9bec0ce.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/a720be397d5933621aa9d875d9bec0ce.woff") format("woff"),
+}
 
 body{
   margin:0;
   padding:0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Strasua","Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   color: #4E00FD;
   overflow: hidden;
@@ -28,7 +23,7 @@ body{
 
 .borne{
   position: absolute;
-  height: 600px;
+  height: 100%;
   width: 400px;
   margin: auto;
   top: 0;
@@ -43,7 +38,7 @@ body{
 .player_style{
   position: absolute;
   margin: auto;
-  
+
   border: 1px solid #000;
 }
 
@@ -62,4 +57,8 @@ body{
 div.life{
   display:flex;
   justify-content: flex-end;
+}
+.bullet{
+  position: absolute;
+  margin: auto;
 }
