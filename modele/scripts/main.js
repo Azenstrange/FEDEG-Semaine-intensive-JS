@@ -75,7 +75,7 @@ window.addEventListener("keydown", function (event) {
     case "ArrowDown":
       if((player.bot_player >= 0)){
         player.bot()
-        player.update()
+        player.update() //temporaire pour les testsx
       }
       break
     case "ArrowUp":
