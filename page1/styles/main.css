@@ -11,6 +11,7 @@ html, body {
 
 h1, h2{
   font-family: 'Strasua', 'Roboto', 'Arial', sans-serif;
+  color: red;
 }
 p{
   text-align: justify;
