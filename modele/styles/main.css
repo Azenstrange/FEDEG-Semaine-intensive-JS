@@ -3,7 +3,7 @@
 	font-family: "Press Start 2P";
 	font-weight: normal;
 	src: url("press_start_2p.ttf");
-} 
+}
 
 @font-face
 {
@@ -43,7 +43,7 @@ body{
 .player_style{
   position: absolute;
   margin: auto;
-  
+
   border: 1px solid #000;
 }
 
@@ -62,4 +62,8 @@ body{
 div.life{
   display:flex;
   justify-content: flex-end;
+}
+.bullet{
+  position: absolute;
+  margin: auto;
 }
