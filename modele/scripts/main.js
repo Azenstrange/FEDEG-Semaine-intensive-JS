@@ -5,8 +5,9 @@ let top_player = 82 , bot_player = 0, right_player = 50, left_player =50
 let x = 0
 let ship_nb = 0
 let stopped = false
+let compteur_ship = 0
 
-// Function 
+// Function
 /*
 let gameOne = {
   display(){
@@ -41,7 +42,7 @@ let gameOne = {
       const button = document.createElement("input");
       button.classList.add("buttonPlay")
       button.type="button";
-      button.value="Play";  
+      button.value="Play";
       borne.appendChild(button);
   }
 } */
@@ -133,20 +134,30 @@ class Ship{
   display(){
       let shipImg = document.createElement('img')
       shipImg.setAttribute('src', "images/shipOne.png")
-      shipImg.setAttribute('id', 'ship'+ ship_nb)
+      shipImg.setAttribute('class', 'ship'+ ship_nb)
       shipImg.classList.add('ship_image')
       borne.appendChild(shipImg)
     }
-    scale(){
-      let ship_image = document.querySelector('.ship_image')
+    scale(y){
+      let ship_liste_query = document.querySelectorAll(`.ship${ship_nb}`)
+      let ship_image = ship_liste_query[y]
       ship_image.style.top = this.top_ship + '%'
       ship_image.style.bot = this.bot_ship + '%'
       ship_image.style.right = this.right_ship + '%'
       ship_image.style.left = this.left_ship + '%'
     }
-    ride(){
-      if(this.top_ship<100){
+    ride(y){
+      if(this.top_ship<99){
       this.top_ship += 1
+      }
+      else if(this.top_ship==99) {
+        this.top_ship += 1
+        compteur_ship -=1
+      }
+      else {
+        let ship_liste_query = document.querySelectorAll(`.ship${ship_nb}`)
+        let ship_image = ship_liste_query[y]
+        ship_image.style.display = "none"
       }
     }
 
@@ -197,36 +208,66 @@ class Bullet_Marvel{
 }
 
 /* -------- Initialisation --------*/
-const ship = new Ship(1, 1)
-ship_nb++
+
 const player = new Player(right_player, left_player, top_player, bot_player, 6);
 const bullets = []
+let list_ship = []
+
+
 config()
 function init() {
-  display()
+
   var loop = setInterval(function() {
       if(!stopped) {
         update()
-      }
+        }
     }, 1000/10)
+}
+function resetship(){
+  list_ship =[]
+  for (let v = 0; v < 5; v++) {
+    //positionShip, fire,top_ship = 25, bot_ship = 10, right_ship = 50, left_ship = 45
+    let top_rand = Math.floor(Math.random()*(20)+10)
+    let bot_rand = Math.floor(Math.random()*(80)+70)
+    let left_rand = Math.floor(Math.random()*(80)+10)
+    let right_rand = Math.floor(Math.random()*(80)+10)
+    const ship = new Ship(1, 1, top_rand, bot_rand, left_rand, right_rand)
+    list_ship.push(ship)
+}
 }
 function config() {
   borne.classList.add("borne")
   document.body.appendChild(borne)
   //gameOne.display()
+  display()
   init()
 }
 function display() {
     player.display()
-    ship.display()
+    console.log(compteur_ship)
+}
+function displayship(){
+  for (let i = 0; i < list_ship.length; i++) {
+    list_ship[i].display()
+  }
 }
 function update() {
     player.update()
-    ship.scale()
-    ship.ride()
-    for (let i = 0; i < bullets.length; i++) {
-      bullets[i].update(i)
+    if(compteur_ship==0){
+       resetship()
+       compteur_ship = 5
+       ship_nb++
+       displayship()
+      }
+
+      for (let j = 0; j < bullets.length; j++) {
+        bullets[j].update(j)
+      }
+    for (let i = 0; i < list_ship.length; i++) {
+      list_ship[i].ride(i)
+      list_ship[i].scale(i)
     }
+
 
 }
 
