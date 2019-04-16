@@ -60,6 +60,7 @@ function display() {
     player.display()
 }
 function update() {
+  console.log(Math.floor(5/2))
     player.update()
 }
 
