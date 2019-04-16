@@ -5,7 +5,49 @@ let top_player = 82 , bot_player = 0, right_player = 50, left_player =50
 let x = 0
 let ship_nb = 0
 let stopped = false
+
+// Function 
+/*
+let gameOne = {
+  display(){
+      const michel = document.createElement('div')
+      let titleOne = document.createElement('h2')
+      titleOne.innerHTML = "Marvel Space"
+      let titleTwo = document.createElement ('h2')
+      titleTwo.innerHTML = "The Game"
+
+      let starImg = document.createElement ('img')
+      let starImg_two = document.createElement ('img')
+
+      starImg.setAttribute ("src", "images/logoStar_up.png")
+      starImg_two.setAttribute ("src", "images/logoStar_down.png")
+
+      starImg.classList.add("starDesign")
+      starImg_two.classList.add("starDesign_two")
+    //  title.classList.add("captainMarvel")
+      titleOne.classList.add("titleCaptain")
+      titleTwo.classList.add("titleGame")
+
+      michel.appendChild(starImg)
+      michel.appendChild(titleOne)
+      michel.appendChild(titleTwo)
+      michel.appendChild(starImg_two)
+
+      borne.appendChild(michel)
+  },
+
+// Créer le bouton Play
+  addButton(){
+      const button = document.createElement("input");
+      button.classList.add("buttonPlay")
+      button.type="button";
+      button.value="Play";  
+      borne.appendChild(button);
+  }
+} */
+
 /* -------- Class --------*/
+
 class Player{
   constructor(right_player,left_player,top_player,bot_player,life,speed){
     this.right_player = right_player,
@@ -171,6 +213,7 @@ function init() {
 function config() {
   borne.classList.add("borne")
   document.body.appendChild(borne)
+  //gameOne.display()
   init()
 }
 function display() {

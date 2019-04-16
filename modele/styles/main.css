@@ -62,3 +62,12 @@ div.life{
   position: absolute;
   margin: auto;
 }
+
+/* titre page 1 du jeu (function gameOne)*/
+.titleCaptain{
+  color: #FD0000;
+}
+
+.titleGame{
+  color: #FFD700;
+}
