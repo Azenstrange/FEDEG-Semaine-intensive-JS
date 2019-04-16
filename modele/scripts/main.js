@@ -166,7 +166,7 @@ function init() {
       if(!stopped) {
         update()
       }
-    }, 1000)
+    }, 1000/10)
 }
 function config() {
   borne.classList.add("borne")
