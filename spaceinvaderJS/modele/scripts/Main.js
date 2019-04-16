@@ -1,34 +1,48 @@
-const canvas = document.createElement("canvas")
-const width =  500, height = 500
-const ctx = canvas.getContext("2d")
+const borne = document.createElement('div')
 
-config()
-function init() {
-  var player = new Player((width-32)/2, height - 2*32, 32, 32, 6);
-}
-function config() {
-    canvas.width= width
-    canvas.height =height
-    document.body.appendChild(canvas)
-    init()
-}
-function draw() {
+const width =  400, height = 600
+const top_player = '82%', bot_player = '0%', right_player = '40%', left_player = '40%'
 
-}
-function update() {
-    player.update();
-}
+//106 194
+
+
 class Player{
-  constructor(x,y,h,w,life,s){
+  constructor(w,h,x,y,life,s){
     this.x = x,
     this.y = y,
-    this.h = h,
-    this.w = w,
-    this.life = life,
-    this.s = s
+    this.h = w,
+    this.w = h,
+    this.s = s,
+    this.life = life
+  }
+  display() {
+    let captain_img = document.createElement('img')
+    captain_img.setAttribute("src", "images/marvelart.png")
+    captain_img.classList.add('player_style')
+    borne.appendChild(captain_img)
   }
   update() {
-    if(input.isDown(KEYS.RIGHT)) this.x += this.speed;
-    if(input.isDown(KEYS.LEFT)) this.x -= this.speed;
+    let player_style = document.querySelector('.player_style')
+    player_style.style.top = this.x
+    player_style.style.bot = this.y
+    player_style.style.right = this.w
+    player_style.style.left = this.h
   }
+}
+const player = new Player(right_player, left_player, top_player, bot_player, 6);
+config()
+function init() {
+  display()
+  update()
+}
+function config() {
+  borne.classList.add("borne")
+  document.body.appendChild(borne)
+  init()
+}
+function display() {
+    player.display()
+}
+function update() {
+    player.update()
 }
