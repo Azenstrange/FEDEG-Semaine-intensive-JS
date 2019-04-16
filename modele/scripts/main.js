@@ -1,4 +1,4 @@
-/* -------- Variable --------*/
+/* -------- Variables --------*/
 const borne = document.createElement('div')
 const width =  400, height = 600
 let top_player = 82 , bot_player = 0, right_player = 50, left_player =50
@@ -42,13 +42,77 @@ class Player{
     this.bot_player -= 1
     this.top_player += 1
   }
+  lifeBar(){
+    let coeur = document.querySelectorAll('.life')
+    switch(life){
+      case 1: 
+        coeur[0].style.display = "none"
+        life--
+        //gameOver()
+        break
+      case 2:
+        coeur[0].setAttribute('src', "images/lifeDown.png")
+        life--
+        break
+      case 3:
+        coeur[1].style.display = "none"
+        life --
+      break
+      case 4:
+      coeur[1].setAttribute('src', "images/lifeDown.png")
+      life --
+      break
+      case 5:
+      coeur[2].style.display = "none"
+      life--
+      break
+      case 6:
+      coeur[2].setAttribute('src', "images/lifeDown.png")
+      life --
+      default:
+        return
+    }
+
+  }
+}
+
+// Vaisseaux ennemis 
+class Ship{
+  constructor(positionShip, fire,top_ship = 25, bot_ship = 10, right_ship = 50, left_ship = 45){
+      this.positionShip = positionShip
+      this.fire = fire
+      this.top_ship = top_ship
+      this.bot_ship = bot_ship
+      this.right_ship = right_ship
+      this.left_ship = left_ship
+  }
+  display(){
+      let shipImg = document.createElement('img')
+      shipImg.setAttribute('src', "images/shipOne.png")
+      shipImg.classList.add('ship_image')
+      borne.appendChild(shipImg)
+    }
+    scale(){
+      let ship_image = document.querySelector('.ship_image')
+      ship_image.style.top = this.top_ship + '%'
+      ship_image.style.bot = this.bot_ship + '%'
+      ship_image.style.right = this.right_ship + '%'
+      ship_image.style.left = this.left_ship + '%'
+    }
+    ride(){
+      this.top_ship -= 1 
+    }
+
 }
 
 /* -------- Initialisation --------*/
+const ship = new Ship(1, 1)
 const player = new Player(right_player, left_player, top_player, bot_player, 6);
 config()
 function init() {
   display()
+  ship.scale()
+  ship.ride()
   update()
 }
 function config() {
@@ -58,6 +122,7 @@ function config() {
 }
 function display() {
     player.display()
+    ship.display()
 }
 function update() {
     player.update()
@@ -102,3 +167,10 @@ window.addEventListener("keydown", function (event) {
   // Cancel the default action to avoid it being handled twice
   event.preventDefault()
 }, true)
+
+
+// Initialisation vaisseaux
+
+function scale() {
+    ship.scale()
+}

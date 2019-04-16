@@ -1,10 +1,31 @@
+/*@font-face
+{
+	font-family: "Press Start 2P";
+	font-weight: normal;
+	src: url("press_start_2p.ttf");
+} 
+
+@font-face
+{
+	font-family: "Strasua";
+	font-weight: normal;
+	src: url("strasua.ttf");
+} */
+
 body{
   margin:0;
   padding:0;
-  font-family: "Niramit", "Arial", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
-  color: teal;
+  color: #4E00FD;
+  overflow: hidden;
+  background: url("../images/Captain2.jpeg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
+
 .borne{
   position: absolute;
   height: 600px;
@@ -15,12 +36,30 @@ body{
   left: 0;
   right: 0;
   border: 1px solid #000;
-  box-shadow: 10px 10px 10px #333;
+/* box-shadow: 10px 10px 10px #333; */
   background: repeat url("../images/star.jpg");
 }
+
 .player_style{
   position: absolute;
   margin: auto;
   
   border: 1px solid #000;
+}
+
+.ship_image{
+  position: absolute;
+  margin: auto;
+  height: 60px;
+  width: auto;
+}
+
+.life{
+  height: 40px;
+  width: auto;
+}
+
+div.life{
+  display:flex;
+  justify-content: flex-end;
 }
