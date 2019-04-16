@@ -1,9 +1,9 @@
-/* -------- Les variables --------*/
+/* -------- Variable --------*/
 const borne = document.createElement('div')
 const width =  400, height = 600
 let top_player = 82 , bot_player = 0, right_player = 50, left_player =50
 
-/* -------- Les Classes --------*/
+/* -------- Class --------*/
 class Player{
   constructor(right_player,left_player,top_player,bot_player,life,speed){
     this.right_player = right_player,
@@ -38,14 +38,13 @@ class Player{
     this.top_player -= 1
     this.bot_player += 1
   }
-  bop(){
+  bot(){
     this.bot_player -= 1
     this.top_player += 1
   }
 }
 
-
-/* -------- début du code --------*/
+/* -------- Initialisation --------*/
 const player = new Player(right_player, left_player, top_player, bot_player, 6);
 config()
 function init() {
@@ -63,3 +62,43 @@ function display() {
 function update() {
     player.update()
 }
+
+
+/*---------Movement---------*/
+
+window.addEventListener("keydown", function (event) {
+  if (event.defaultPrevented) {
+    return // Do nothing if the event was already processed
+  }
+
+  switch (event.key) {
+    case "ArrowDown":
+      if((player.bot_player >= 0)){
+        player.bot()
+        player.update()
+      }
+      break
+    case "ArrowUp":
+      if ((player.top_player >= 0)) {
+        player.top()
+        player.update()
+      }
+      break
+    case "ArrowLeft":
+      if ((player.left_player >= 0)) {
+        player.left()
+        player.update()
+      }
+      break
+    case "ArrowRight":
+      if ((player.right_player >= 14)) {
+        player.right()
+        player.update()
+      }
+      break
+    default:
+      return // Quit when this doesn't handle the key event.
+  }
+  // Cancel the default action to avoid it being handled twice
+  event.preventDefault()
+}, true)
