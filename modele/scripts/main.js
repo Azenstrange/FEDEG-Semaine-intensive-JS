@@ -46,31 +46,31 @@ class Player{
   }
   lifeBar(){
     let coeur = document.querySelectorAll('.life')
-    switch(life){
+    switch(this.life){
       case 1:
         coeur[0].style.display = "none"
-        life--
+        this.life -= 1
         //gameOver()
         break
       case 2:
         coeur[0].setAttribute('src', "images/lifeDown.png")
-        life--
+        this.life -= 1
         break
       case 3:
         coeur[1].style.display = "none"
-        life --
+        this.life -= 1
       break
       case 4:
       coeur[1].setAttribute('src', "images/lifeDown.png")
-      life --
+      this.life -= 1
       break
       case 5:
       coeur[2].style.display = "none"
-      life--
+      this.life -= 1
       break
       case 6:
       coeur[2].setAttribute('src', "images/lifeDown.png")
-      life --
+      this.life -= 1
       default:
         return
     }
