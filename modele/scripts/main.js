@@ -122,6 +122,7 @@ class Player{
       let left= parseInt(ship_liste_query[i].style.left.substring(0,ship_liste_query[i].style.left.length-1))
 
       if((ship_liste_query[i].style.display != "none")&&(collision_check(this.top_player,this.left_player,top, left))){
+        setDamage(1)
         lifeBar()
         ship_liste_query[i].style.display="none"
         if(game.compteur_ship > 0){
@@ -287,6 +288,7 @@ class Bullet_Marvel{
       }
       if ((this.ennemi)&&(bulletstyle.style.display != "none")&&(collision_check(this.position_bullet_top,this.position_bullet_left,top_p, left_p))) {
         bulletstyle.style.display = "none"
+        setDamage(1)
         lifeBar()
       }
     }
@@ -334,6 +336,8 @@ class Game{
   }
 }
 /* -------- Initialisation --------*/
+// Show loading animation.
+
 config_menu()
 let game
 function config_menu() {
@@ -371,11 +375,10 @@ function config_menu() {
 //let game = new Game() // let's start the game
 //config() // let's start the game
 function setDamage(damage = 0){
-  if(max != 0){
-      generateShield.progress.setAttribute('value', game.shield )
-      generateShield.progress.setAttribute('max', 6)}
+  game.progress.setAttribute('value', game.shield )
+  game.progress.setAttribute('max', 6)
   addEventListener('click', function(){
-    generateShield.progress.setAttribute('value', game.shield -= damage)
+    game.progress.setAttribute('value', game.shield -= damage)
   })
 }
 
@@ -480,6 +483,7 @@ function update() {
     else {
       game.shield_reload --
     }
+    setDamage()
 }
 /*
 to make the player lose health
