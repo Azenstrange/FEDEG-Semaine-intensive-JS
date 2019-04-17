@@ -127,6 +127,7 @@ p{
 #demo{
   margin-right: 100px;
   z-index: 1;
+  height: 450px;
 }
 
 .play{
@@ -236,7 +237,7 @@ section::after {
 .space{
   background-image: url('../images/space.jpg');
   background-position: top;
-  background-size: 1488px 980px;
+  background-size: 1388px 874px;
   background-repeat: no-repeat;
   z-index: 0;
   margin-top: -60px;
@@ -276,14 +277,14 @@ img{
 .histT{
   display: flex;
   justify-content: space-around;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 img#thanos{
-  margin-top: 55px;
+  margin-top: 90px;
   margin-bottom: 10px;
-  width: 490px;
-	height: 320px;
+  width: 390px;
+	height: 220px;
 }
 
 div.thanos{
@@ -301,17 +302,17 @@ div.thanos{
 }
 
 img#captain{
-  margin-top: 45px;
+  margin-top: 85px;
   margin-bottom: 35px;
   margin-right: 50px;
-  width: 360px;
-  height: 290px;
+  width: 260px;
+  height: 195px;
 }
 
 div.captain{
   width: 500px;
   height: 20px;
-  margin-top: 80px;
+  margin-top: 65px;
 }
 
 p#CapMar, p#storyThanos{
