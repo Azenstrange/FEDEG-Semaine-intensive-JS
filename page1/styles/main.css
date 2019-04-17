@@ -10,6 +10,12 @@
   width: 960px;
 }
 
+.container2{
+  height: 100%;
+  margin: 0 auto;
+  width: 1100px;
+}
+
 h1, h2{
   font-family: 'Strasua', 'Arial', sans-serif;
   color: red;
@@ -77,7 +83,6 @@ p{
 }
 
 /*CONTAINER*/
-
 .FondEtoile{
   background-image:url("../images/etoiles.png");
   margin-top: -70px;
@@ -101,7 +106,6 @@ p{
 }
 
 /*objectif*/
-
 .goal{
   width: 500px;
   height: 100px;
@@ -119,6 +123,7 @@ p{
 .play a{
   text-decoration: none;
 }
+
 /*arrow scroll*/
 /* section {
   position: relative;
@@ -196,58 +201,66 @@ section::after {
     opacity: 0;
   }
 }*/
-.story{
-  background-color: #fff;
-  margin-top: 60px;
+
+.container2 h2{
+  margin-left: 70px;
 }
 
-{
-  margin: auto 30px;
+.story{
+  background-color: #eee;
+  margin-top: 60px;
 }
 
 img{
   border-radius: 25px;
 }
 
-/*histoire Thanos*/
-
 .story h3{
-  color:;
-  font-size: 40px;
-  font-family: 'HomepageBaukasten',
+  color:blue;
+  font-size: 25px;
+  font-family: 'HomepageBaukasten', sans-serif;
+  margin-top: 25px;
+  margin-left: 45px;
 }
 
+/*histoire Thanos*/
 .histT{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-bottom: 80px;
 }
 
 img#thanos{
-  margin-top: 40px;
-  margin-bottom: 55px;
-  margin-left: 40px;
+  margin-top: 80px;
+  margin-bottom: 10px;
+  margin-left: 60px;
 }
 
 div.thanos{
   width: 500px;
   height: 20px;
+  margin-right: 50px;
+  margin-top: 30px;
 }
 
 /*histoire Captain Marvel*/
 .histC{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+  margin-top: -35px;
 }
 
 img#captain{
-  margin-top: 40px;
+  margin-top: 70px;
   margin-bottom: 55px;
-  margin-left: 40px;
+  margin-right: 50px;
 }
 
 div.captain{
   width: 500px;
   height: 20px;
+ margin-top: 80px;
 }
 
 p#CapMar, p#storyThanos{
@@ -255,7 +268,7 @@ p#CapMar, p#storyThanos{
   border-width: 2px;
   border-color: black;
   border-radius: 35px;
-  padding: 10px;
+  padding: 13px;
 }
 
 .bandeAnnonce{
