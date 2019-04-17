@@ -234,6 +234,7 @@ section::after {
   }
 }*/
 
+/*Story*/
 .space{
   background-image: url('../images/space.jpg');
   background-position: top;
@@ -324,6 +325,7 @@ p#CapMar, p#storyThanos{
   padding: 13px;
 }
 
+/*Bande Annonce*/
 .bandeAnnonce{
   max-width: 100%;
   margin: 0 auto;
