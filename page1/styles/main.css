@@ -4,6 +4,10 @@
   padding: 0;
 }
 html, body {
+
+}
+
+.container{
   height: 100%;
   margin: 0 auto;
   width: 960px;
@@ -13,16 +17,101 @@ h1, h2{
   font-family: 'Strasua', 'Roboto', 'Arial', sans-serif;
   color: red;
 }
+
+h3{
+  color: red;
+}
 p{
   text-align: justify;
 }
 
+/* HEADER */
+
+.header{
+  width: 100%;
+  background-color: #010A3C;
+  height: 150px;
+  display: flex;
+  justify-content: space-around;
+  position:absolute;
+  z-index: 1;
+  margin-top: 0px;
+  opacity: 0.9;
+}
+
+.header img{
+  width: 150px;
+  height: 150px;
+  margin-left: 20px;
+  margin-bottom: 40px;
+  opacity: 1;
+}
+
+.MarvelSpace{
+  font-size: 80px;
+}
+
+.needYou{
+  font-size: 22px;
+  margin-top: 60px;
+  margin-right: 100px;
+}
+
+.TitleAndPicture{
+  margin-top: 17px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.TheGame{
+  margin-left: 340px;
+  margin-top: -10px;
+  color: #CECE1E;
+}
+
+.PhotoAccueil img{
+  width: 100%;
+  position: relative;
+  margin-top: 0px;
+  z-index: 0;
+}
+
+/*CONTAINER*/
+
+.goal{
+  margin-top: 50px;
+}
+
+.goal h3{
+
+}
+
+.goal p{
+  margin-top: 20px;
+}
+
+.play{
+  margin-top: 40px;
+}
+
 /*objectif*/
+
 .goal{
   width: 500px;
   height: 100px;
 }
 
+.play{
+  text-align: center;
+  border: solid;
+  border-color: red;
+  border-radius: 15px;
+}
+
+.play a{
+  text-decoration: none;
+}
 /*arrow scroll*/
 section {
   position: relative;

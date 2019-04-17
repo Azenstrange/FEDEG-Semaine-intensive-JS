@@ -5,8 +5,9 @@ let top_player = 82 , bot_player = 0, right_player = 50, left_player =50
 let x = 0
 let ship_nb = 0
 let stopped = false
-
-// Function 
+let compteur_ship = 0
+const ship_path = ["images/ships/shipOne.gif","images/ships/shipTwo.gif","images/ships/shipThree.gif","images/ships/shipFour.gif", "images/ships/shipFive.gif", "images/ships/shipSix.gif", "images/ships/shipSeven.gif"]
+// Function
 /*
 let gameOne = {
   display(){
@@ -41,7 +42,7 @@ let gameOne = {
       const button = document.createElement("input");
       button.classList.add("buttonPlay")
       button.type="button";
-      button.value="Play";  
+      button.value="Play";
       borne.appendChild(button);
   }
 } */
@@ -122,8 +123,8 @@ class Player{
 
 // Vaisseaux ennemis
 class Ship{
-  constructor(positionShip, fire,top_ship = 25, bot_ship = 10, right_ship = 50, left_ship = 45){
-      this.positionShip = positionShip
+  constructor(type_ship, fire,top_ship = 25, bot_ship = 10, right_ship = 50, left_ship = 45){
+      this.type_ship = type_ship
       this.fire = fire
       this.top_ship = top_ship
       this.bot_ship = bot_ship
@@ -132,21 +133,33 @@ class Ship{
   }
   display(){
       let shipImg = document.createElement('img')
-      shipImg.setAttribute('src', "images/shipOne.png")
-      shipImg.setAttribute('id', 'ship'+ ship_nb)
+      shipImg.setAttribute('src', this.type_ship)
+      shipImg.setAttribute('class', 'ship'+ ship_nb)
       shipImg.classList.add('ship_image')
       borne.appendChild(shipImg)
     }
-    scale(){
-      let ship_image = document.querySelector('.ship_image')
+    scale(y){
+      let ship_liste_query = document.querySelectorAll(`.ship${ship_nb}`)
+      let ship_image = ship_liste_query[y]
       ship_image.style.top = this.top_ship + '%'
       ship_image.style.bot = this.bot_ship + '%'
       ship_image.style.right = this.right_ship + '%'
       ship_image.style.left = this.left_ship + '%'
     }
-    ride(){
-      if(this.top_ship<100){
+    ride(y){
+      let ship_liste_query = document.querySelectorAll(`.ship${ship_nb}`)
+      let ship_image = ship_liste_query[y]
+      if(this.top_ship<99){
       this.top_ship += 1
+      }
+      else if((this.top_ship==99)&& (ship_image.style.display != "none") && (compteur_ship > 0)) {
+        this.top_ship += 1
+        compteur_ship -=1
+        console.log(compteur_ship)
+      }
+      else {
+
+        ship_image.style.display = "none"
       }
     }
 
@@ -180,10 +193,29 @@ class Bullet_Marvel{
   }
   update(y) {
     let bulletstyle = document.getElementById(y)
-    if(this.position_bullet_top>0)
+    let ship_liste_query = document.querySelectorAll(`.ship${ship_nb}`)
+    if(bulletstyle.style.display != "none"){
+      for (let i = 0; i < ship_liste_query.length; i++) {
+      let top= parseInt(ship_liste_query[i].style.top.substring(0,ship_liste_query[i].style.top.length-1))
+
+      let right= parseInt(ship_liste_query[i].style.right.substring(0,ship_liste_query[i].style.right.length-1))
+      let left= parseInt(ship_liste_query[i].style.left.substring(0,ship_liste_query[i].style.left.length-1))
+
+      if((ship_liste_query[i].style.display != "none")&&(aabb(this.position_bullet_top,this.position_bullet_right,this.position_bullet_left,top, right, left))){
+        bulletstyle.style.display = "none"
+        ship_liste_query[i].style.display="none"
+        if(compteur_ship > 0){
+          compteur_ship -=1
+        }
+        console.log(compteur_ship)
+        ship_liste_query[i].style.top = "100%"
+      }
+    }
+  }
+    if((this.position_bullet_top>0) && (bulletstyle.style.display != "none") )
     {
       this.position_bullet_top -= 5
-      this.position_bullet_bot += 5
+
 
       bulletstyle.style.top = this.position_bullet_top + '%'
       bulletstyle.style.bot = this.position_bullet_bot + '%'
@@ -197,43 +229,86 @@ class Bullet_Marvel{
 }
 
 /* -------- Initialisation --------*/
-const ship = new Ship(1, 1)
-ship_nb++
+
 const player = new Player(right_player, left_player, top_player, bot_player, 6);
 const bullets = []
+let list_ship = []
+
+
 config()
 function init() {
-  display()
+
   var loop = setInterval(function() {
       if(!stopped) {
         update()
-      }
-    }, 1000/10)
+        }
+    }, 1000/15)
+}
+function resetship(){
+  list_ship =[]
+  for (let v = 0; v < 5; v++) {
+    //positionShip, fire,top_ship = 25, bot_ship = 10, right_ship = 50, left_ship = 45
+    let top_rand = Math.floor(Math.random()*(10)+0)
+    let bot_rand = Math.floor(Math.random()*(80)+80)
+    let left_rand = Math.floor(Math.random()*(80)+10)
+    let right_rand = Math.floor(Math.random()*(80)+10)
+    let rand_ship = Math.floor(Math.random()*7)
+    const ship = new Ship(ship_path[rand_ship], 1, top_rand, bot_rand, left_rand, right_rand)
+    list_ship.push(ship)
+}
 }
 function config() {
   borne.classList.add("borne")
   document.body.appendChild(borne)
   //gameOne.display()
+  display()
   init()
 }
 function display() {
     player.display()
-    ship.display()
+    console.log(compteur_ship)
+}
+function displayship(){
+  for (let i = 0; i < list_ship.length; i++) {
+    list_ship[i].display()
+  }
 }
 function update() {
     player.update()
-    ship.scale()
-    ship.ride()
-    for (let i = 0; i < bullets.length; i++) {
-      bullets[i].update(i)
+    if(compteur_ship==0){
+       resetship()
+       compteur_ship += 5
+       ship_nb++
+       displayship()
+      }
+
+      for (let j = 0; j < bullets.length; j++) {
+        bullets[j].update(j)
+      }
+    for (let i = 0; i < list_ship.length; i++) {
+      list_ship[i].ride(i)
+      list_ship[i].scale(i)
     }
+
 
 }
 
 
 /*---------Movement---------*/
-function AABB(ax, ay, aw, ah, bx, by, bw, bh) {
-           return ax<bx+bw && ay<by+bh && bx<ax+aw && by<ay+ah;
+function aabb(ax,  aw, ah, bx,  bw, bh) {
+           let top = bx - ax
+
+
+           let right = bw - aw
+
+           let left = bh - ah
+
+           if((top>0 && top < 20) && (right>-20 && right < 20) && (left>-20 && left < 20)){
+             return true
+           }
+           else {
+             return false
+           }
        }
 
 window.addEventListener("keydown", function (event) {
@@ -245,25 +320,25 @@ window.addEventListener("keydown", function (event) {
     case 40:
       if((player.bot_player >= 0)){
         player.bot()
-        player.update() //temporaire pour les testsx
+ //temporaire pour les testsx
       }
       break
     case 38:
       if ((player.top_player >= 0)) {
         player.top()
-        player.update()
+
       }
       break
     case 37:
       if ((player.left_player >= 0)) {
         player.left()
-        player.update()
+
       }
       break
     case 39:
       if ((player.right_player >= 14)) {
         player.right()
-        player.update()
+
       }
       break
       case 32:
