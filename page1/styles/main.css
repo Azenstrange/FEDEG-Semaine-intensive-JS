@@ -111,17 +111,17 @@ p{
 }
 
 .goal h3{
-  text-align: center;
   color: red;
   width: 1100px;
+  text-align: center;
   font-size: 50px;
-  padding-top: 70px;
+  margin-top: 50px;
 }
 
 .goal p{
   line-height: 70px;
-  font-size: 25px;
-  margin-top: 70px;
+  font-size: 27px;
+  margin-top: 60px;
   color: white;
 }
 
@@ -139,7 +139,7 @@ p{
   border-radius: 15px;
   width: 450px;
   margin: 0 auto;
-  margin-top: 620px;
+  margin-top: 600px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -152,13 +152,10 @@ p{
   text-decoration: none;
 }
 
-<<<<<<< HEAD
 .play h2{
   color: #CECE1E;
   font-size: 40px;
 }
-=======
->>>>>>> db2db9cb7cfedfeb2f7a17c7791f441eee5782c0
 /*arrow scroll*/
 /* section {
   position: relative;
