@@ -138,10 +138,10 @@ class Player{
   move(mouv){
     switch (mouv) {
       case "left":
-        this.left_player -= 4
+        this.left_player -= 6
         break
       case "right":
-        this.left_player += 4
+        this.left_player += 6
         break
       case "top":
         this.top_player -= 2
@@ -407,7 +407,7 @@ function init() { //start the loot for the refresh
       if(!game.stopped) {
         update(game)
         }
-    }, 50)
+    }, 40)
 }
 /*
 if the wave is finish we send a new one
