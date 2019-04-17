@@ -20,6 +20,17 @@ body{
   background-position: center;
   background-attachment: fixed;
 }
+.finalscore_block{
+  margin-top: 50%;
+  width: 100%;
+  background-color: white;
+}
+.finalscore{
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: #FD0000;
+}
 .heart_main{
   width:140px;
   height:40px;
@@ -133,5 +144,5 @@ div.life{
   border: 3px solid #2810E0;
   padding: 10px 20px;
   width: 70px;
-  margin: 30px auto; 
+  margin: 30px auto;
 }

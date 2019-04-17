@@ -225,6 +225,7 @@ class Ship{
       else if((this.top_ship==99)&& (ship_image.style.display != "none") && (game.compteur_ship > 0)) {
         this.top_ship += 1
         game.compteur_ship -=1
+        game.score -= 50
       }
       else {
 
@@ -277,6 +278,7 @@ class Bullet_Marvel{
         let explosion = new Explosion(top,left)
         explosion.display(game)
         game.list_explo.push(explosion)
+        game.score += 100
         ship_liste_query[i].style.display="none"
         if(game.compteur_ship > 0){
           game.compteur_ship -=1
@@ -322,11 +324,13 @@ class Game{
     this.compteur_ship = 0, // number of ship in the game
     this.ship_path = ["images/ships/shipOne.gif","images/ships/shipTwo.gif","images/ships/shipThree.gif","images/ships/shipFour.gif", "images/ships/shipFive.gif", "images/ships/shipSix.gif", "images/ships/shipSeven.gif"] // the skin of ennemi ship
     this.player = new Player(this.left_player, this.top_player), // to set the player
-    this.bullets = [], // a tab containing the active bullets
-    this.list_ship = [], // a tab containing the active ennemi ships
-    this.list_explo = [],
-    this.shield = 6,
-    this.shield_reload = 300
+    this.bullets = [], // a tab with all the active bullets
+    this.list_ship = [], // a tab with all the active ennemi ships
+    this.list_explo = [], // a list with all the explosion
+    this.shield = 6, // the value of the shield
+    this.shield_reload = 600, //the time for the shield to refresh
+    this.score = 0,
+    this.progress = document.querySelector('#avancement')
   }
 }
 /* -------- Initialisation --------*/
@@ -366,10 +370,33 @@ function config_menu() {
 
 //let game = new Game() // let's start the game
 //config() // let's start the game
+function setDamage(damage = 0){
+  if(max != 0){
+      generateShield.progress.setAttribute('value', game.shield )
+      generateShield.progress.setAttribute('max', 6)}
+  addEventListener('click', function(){
+    generateShield.progress.setAttribute('value', game.shield -= damage)
+  })
+}
 
 /*-----function to refresh -----*/
 function gameOver() {
   game.stopped = true
+  let borne = game.borne
+  let div = document.createElement('div')
+  let gameover = document.createElement('p')
+  div.classList.add('finalscore_block')
+  gameover.classList.add('finalscore')
+  gameover.innerHTML = "Game Over! Your score is " + game.score
+  div.appendChild(gameover)
+  game.borne.appendChild(div)
+  let player = document.querySelector('.player_style')
+  player.style.display = "none"
+  let ship_liste_query = document.querySelectorAll(`.ship${game.ship_nb}`)
+  for(let i = 0; i < ship_liste_query.length;i++){
+    ship_liste_query[i].style.display = "none"
+  }
+
 }
 function init() { //start the loot for the refresh
 
@@ -502,7 +529,6 @@ function lifeBar(){
 
       game.shield--
   }
-
 }
 /*--------collision_check----------*/
 function collision_check(ax, ah, bx, bh) {
