@@ -1,98 +1,96 @@
 /* -------- Variables --------*/
 // Function
-/*
-// Début du Jeu avec "Marvel Space" + bouton Play
+// Beginning of the game "Marvel Space" and button Play
 let gameOne = {
-    display(){
-        // Création de la div container
-        const container = document.createElement('div')
-        container.classList.add("gameone")
-        // Création des titres
-        let titleOne = document.createElement('p')
-        titleOne.innerHTML = "Marvel Space"
-        let titleTwo = document.createElement ('p')
-        titleTwo.innerHTML = "The Game"
+  display(borne){
+      // Creation div container
+      const container = document.createElement('div')
+      container.classList.add("gameone")
+      // Creation of titles
+      let titleOne = document.createElement('p')
+      titleOne.innerHTML = "Marvel Space"
+      let titleTwo = document.createElement ('p')
+      titleTwo.innerHTML = "The Game"
 
-        // Création du bouton
-        const containerButton = document.createElement('div')
-        const button = document.createElement("a");
-        button.classList.add("buttonPlay")
-        button.setAttribute('href', '#')
-        button.setAttribute ('title', 'Play')
-        button.innerHTML = 'Play'
+      // Creation of the button
+      const containerButton = document.createElement('div')
+      const button = document.createElement("a");
+      button.classList.add("buttonPlay")
+      button.setAttribute('href', '#')
+      button.setAttribute ('title', 'Play')
+      button.innerHTML = 'Play'
 
-        // Création des images
-        let starImg = document.createElement ('img')
-        let starImg_two = document.createElement ('img')
+      // Creation of images
+      let starImg = document.createElement ('img')
+      let starImg_two = document.createElement ('img')
 
-        starImg.setAttribute ("src", "images/STAR1.png")
-        starImg_two.setAttribute ("src", "images/STAR2.png")
+      starImg.setAttribute ("src", "images/logoStar_up.png")
+      starImg_two.setAttribute ("src", "images/logoStar_down.png")
 
-        // Attribution des classes
-        starImg.classList.add("starDesign")
-        starImg_two.classList.add("starDesign_two")
-        titleOne.classList.add("titleCaptain")
-        titleTwo.classList.add("titleGame")
+      // Attribution of classes
+      starImg.classList.add("starDesign")
+      starImg_two.classList.add("starDesign_two")
+      titleOne.classList.add("titleCaptain")
+      titleTwo.classList.add("titleGame")
 
-        // Initialisation
-        container.appendChild(starImg)
-        container.appendChild(titleOne)
-        container.appendChild(titleTwo)
-        containerButton.appendChild(button)
-        container.appendChild(containerButton)
-        container.appendChild(starImg_two)
-        borne.appendChild(container)
-    },
+      // Initialisation
+      container.appendChild(starImg)
+      container.appendChild(titleOne)
+      container.appendChild(titleTwo)
+      containerButton.appendChild(button)
+      container.appendChild(containerButton)
+      container.appendChild(starImg_two)
+      borne.appendChild(container)
+  },
 
 }
-// Fin de la fonction gameOne
+// End of the gameOne
 
-// 2ème page avec les characters
+// Second page with characters and Let's Go button
 let gameTwo ={
-    display(){
-        //Création div container
-        const pageTwo = document.createElement('div')
-        pageTwo.classList.add("gametwo")
+  display(borne){
+      //Creation div container
+      const pageTwo = document.createElement('div')
+      pageTwo.classList.add("gametwo")
 
-        // Création des titres
-        let charactersTitle = document.createElement('p')
-        charactersTitle.innerHTML = "Characters"
-        let howPlay = document.createElement ('p')
-        howPlay.innerHTML = "How to play ?"
+      // Creation of titles
+      let charactersTitle = document.createElement('p')
+      charactersTitle.innerHTML = "Characters"
+      let howPlay = document.createElement ('p')
+      howPlay.innerHTML = "How to play ?"
 
-        // Création du bouton
-        const divButton = document.createElement('div')
-        const button = document.createElement("a");
-        button.classList.add("buttonGo")
-        button.setAttribute('href', '#')
-        button.setAttribute ('title', 'Lets Go !')
-        button.innerHTML = 'Lets Go !'
+      // Creation of the button
+      const divButton = document.createElement('div')
+      const button = document.createElement("a");
+      button.classList.add("buttonGo")
+      button.setAttribute('href', '#')
+      button.setAttribute ('title', 'Lets Go !')
+      button.innerHTML = 'Lets Go !'
 
-        // Création des images
-        let starImg = document.createElement ('img')
-        starImg.setAttribute ("src", "images/STAR1.png")
-        let starImg_two = document.createElement ('img')
-        starImg_two.setAttribute ("src", "images/STAR2.png")
+      // Creation of images
+      let starImg = document.createElement ('img')
+      starImg.setAttribute ("src", "images/logoStar_up.png")
+      let starImg_two = document.createElement ('img')
+      starImg_two.setAttribute ("src", "images/logoStar_down.png")
 
-        // Attribution des classes
-        starImg.classList.add("starDesign")
-        starImg_two.classList.add("starDesign_two")
-      //  title.classList.add("captainMarvel")
-        charactersTitle.classList.add("charactersTitle")
-        howPlay.classList.add("howPlay")
+      // Attribution of classes
+      starImg.classList.add("starDesign")
+      starImg_two.classList.add("starDesign_two")
+      charactersTitle.classList.add("charactersTitle")
+      howPlay.classList.add("howPlay")
 
-        // Iniatialisation
-        pageTwo.appendChild(starImg)
-        pageTwo.appendChild(charactersTitle)
-        pageTwo.appendChild(howPlay)
-        divButton.appendChild(button)
-        pageTwo.appendChild(divButton)
-        pageTwo.appendChild(starImg_two)
-        borne.appendChild(pageTwo)
-    }
+      // Iniatialisation
+      pageTwo.appendChild(starImg)
+      pageTwo.appendChild(charactersTitle)
+      pageTwo.appendChild(howPlay)
+      divButton.appendChild(button)
+      pageTwo.appendChild(divButton)
+      pageTwo.appendChild(starImg_two)
+      borne.appendChild(pageTwo)
+  }
 }
-// Fin de la gameTwo
-} */
+// End of the gameTwo
+
 
 /* -------- Class --------*/
 class Player{
@@ -301,9 +299,42 @@ class Game{
   }
 }
 /* -------- Initialisation --------*/
+config_menu()
+let game
+function config_menu() {
+  let borne = document.querySelector('.borne')
+  borne.classList.add("borne")
+  document.body.appendChild(borne)
+  gameOne.display(borne)
+  // Click on "Play" , the first page disapeared and the second page is popping
+  let buttonPlay = document.querySelector('.buttonPlay')
+    buttonPlay.addEventListener(
+    'click',
+    function(){
+        let display = document.querySelector(".gameone")
+        display.style.display = "none"
+        gameTwo.display(borne)
+        let buttonTwo = document.querySelector('.buttonGo')
+        button_page(buttonTwo)
 
-let game = new Game() // let's start the game
-config() // let's start the game
+    })
+    // Click on "Let's go" , the second page disapeared and the game is starting
+  }
+  function button_page(button){
+    button.addEventListener(
+      'click',
+      function(){
+          let display = document.querySelector(".gametwo")
+          display.style.display = "none"
+          console.log("hello there")
+          game = new Game()
+          config()
+      }
+      )
+  }
+
+//let game = new Game() // let's start the game
+//config() // let's start the game
 
 /*-----function to refresh -----*/
 function gameOver() {
@@ -476,4 +507,3 @@ window.addEventListener("keydown", function (event) {
 }, true)
 
 
-// Initialisation vaisseaux
