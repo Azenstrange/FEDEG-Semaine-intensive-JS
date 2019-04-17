@@ -44,7 +44,7 @@ body{
 
 .ship_image{
   position: absolute;
-  margin: auto;
+  margin: 0 0;
   height: 60px;
   width: auto;
 }
