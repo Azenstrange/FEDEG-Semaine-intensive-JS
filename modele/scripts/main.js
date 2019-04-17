@@ -324,7 +324,9 @@ class Game{
     this.player = new Player(this.left_player, this.top_player), // to set the player
     this.bullets = [], // a tab containing the active bullets
     this.list_ship = [], // a tab containing the active ennemi ships
-    this.list_explo = []
+    this.list_explo = [],
+    this.shield = 6,
+    this.shield_reload = 300
   }
 }
 /* -------- Initialisation --------*/
@@ -443,6 +445,14 @@ function update() {
     for (let v = 0; v < game.list_explo.length; v++){
       game.list_explo[v].update(v, game)
     }
+    /* update of the shield*/
+    if(game.shield_reload < 0){
+      game.shield_reload = 300
+      game.shield = 6
+    }
+    else {
+      game.shield_reload --
+    }
 }
 /*
 to make the player lose health
@@ -457,35 +467,42 @@ function lifeBar(){
     //gameOver()
   }*/
   let coeur = document.querySelectorAll('.life')
-  switch(game.life){
-    case 1:
-      coeur[0].style.display = "none"
-      game.life -= 1
-      gameOver()
+  if(game.shield<0){
+    switch(game.life){
+      case 1:
+        coeur[0].style.display = "none"
+        game.life -= 1
+        gameOver()
+        break
+      case 2:
+        coeur[0].setAttribute('src', "images/lifeDown.png")
+        game.life -= 1
+        break
+      case 3:
+        coeur[1].style.display = "none"
+        game.life -= 1
       break
-    case 2:
-      coeur[0].setAttribute('src', "images/lifeDown.png")
+      case 4:
+      coeur[1].setAttribute('src', "images/lifeDown.png")
       game.life -= 1
       break
-    case 3:
-      coeur[1].style.display = "none"
+      case 5:
+      coeur[2].style.display = "none"
       game.life -= 1
-    break
-    case 4:
-    coeur[1].setAttribute('src', "images/lifeDown.png")
-    game.life -= 1
-    break
-    case 5:
-    coeur[2].style.display = "none"
-    game.life -= 1
-    break
-    case 6:
-    coeur[2].setAttribute('src', "images/lifeDown.png")
-    game.life -= 1
-    break
-    default:
-      return
+      break
+      case 6:
+      coeur[2].setAttribute('src', "images/lifeDown.png")
+      game.life -= 1
+      break
+      default:
+        return
+    }
   }
+    else {
+
+      game.shield--
+  }
+
 }
 /*--------collision_check----------*/
 function collision_check(ax, ah, bx, bh) {
