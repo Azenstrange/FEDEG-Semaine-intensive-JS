@@ -325,6 +325,33 @@ p#CapMar, p#storyThanos{
   padding: 13px;
 }
 
+/*Bande Annonce + Play2*/
+.button{
+  display: flex;
+  justify-content: space-around;
+}
+/*Play2*/
+.play2{
+  border: solid;
+  border-color: red;
+  border-radius: 15px;
+  width: 450px;
+  margin: 0 auto;
+}
+
+.play2 :hover{
+  color: #03129a;
+}
+
+.play2 a{
+  text-decoration: none;
+}
+
+.play2 h2{
+  color: #CECE1E;
+  font-size: 40px;
+}
+
 /*Bande Annonce*/
 .bandeAnnonce{
   max-width: 100%;
