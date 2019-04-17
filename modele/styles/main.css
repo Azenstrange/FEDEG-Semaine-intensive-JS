@@ -77,7 +77,7 @@ div.life{
   color: #FD0000;
   display: flex;
   justify-content: center;
-  margin-top: 95px;
+  margin-top: 98px;
 }
 
 .titleGame{
@@ -85,11 +85,16 @@ div.life{
   display: flex;
   justify-content: flex-end;
   padding: 0px 40px;
+  margin-top: 90px;
 }
 
 .starDesign, .starDesign_two{
   height: 70px;
   width: 100%;
+}
+
+.starDesign_two{
+  margin-top: 70px;
 }
 
 .buttonPlay{
@@ -100,7 +105,7 @@ div.life{
   border: 3px solid #2810E0;
   padding: 0px 50px;
   width: 30px;
-  margin: 85px auto;
+  margin: 90px auto;
 }
 
 /*Second page of the game */
@@ -116,7 +121,7 @@ div.life{
 }
 
 .howPlay{
-  margin: 70px 0px;
+  margin: 110px 0px;
   padding: 30px;
 }
 
@@ -128,5 +133,5 @@ div.life{
   border: 3px solid #2810E0;
   padding: 10px 20px;
   width: 70px;
-  margin: 50px auto; 
+  margin: 30px auto; 
 }
