@@ -153,7 +153,32 @@ class Player{
   }
 }
 
+class Explosion{
+  constructor(top_ship, left_ship, count = 1){
+    this.top_ship = top_ship,
+    this.left_ship = left_ship,
+    this.count = count
+  }
+  display(game){
+      let explo_img = document.createElement('img')
+      explo_img.setAttribute('src', 'images/ships/explosion.gif')
+      explo_img.setAttribute('class', 'explosion')
+      explo_img.classList.add('ship_image')
+      game.borne.appendChild(explo_img)
+      explo_img.style.top = this.top_ship + '%'
+      explo_img.style.left = this.left_ship + '%'
 
+    }
+    update(explo, game){
+      let explosi = document.querySelectorAll('.explosion')
+      if(this.count > 12){
+        explosi[explo].style.display = "none"
+      }
+      else {
+        this.count += 1
+      }
+    }
+  }
 // Vaisseaux ennemis
 class Ship{
   constructor(type_ship, fire,top_ship = 25, left_ship = 45){
@@ -249,6 +274,9 @@ class Bullet_Marvel{
 
       if((!this.ennemi)&&(ship_liste_query[i].style.display != "none")&&(collision_check(this.position_bullet_top,this.position_bullet_left,top, left))){
         bulletstyle.style.display = "none"
+        let explosion = new Explosion(top,left)
+        explosion.display(game)
+        game.list_explo.push(explosion)
         ship_liste_query[i].style.display="none"
         if(game.compteur_ship > 0){
           game.compteur_ship -=1
@@ -295,7 +323,10 @@ class Game{
     this.ship_path = ["images/ships/shipOne.gif","images/ships/shipTwo.gif","images/ships/shipThree.gif","images/ships/shipFour.gif", "images/ships/shipFive.gif", "images/ships/shipSix.gif", "images/ships/shipSeven.gif"] // the skin of ennemi ship
     this.player = new Player(this.left_player, this.top_player), // to set the player
     this.bullets = [], // a tab containing the active bullets
-    this.list_ship = [] // a tab containing the active ennemi ships
+    this.list_ship = [], // a tab containing the active ennemi ships
+    this.list_explo = [],
+    this.shield = 6,
+    this.shield_reload = 300
   }
 }
 /* -------- Initialisation --------*/
@@ -401,12 +432,26 @@ function update() {
        game.ship_nb++
        displayship()
       }
+      /*update of bullets*/
       for (let j = 0; j < game.bullets.length; j++) {
         game.bullets[j].update(j,game)
       }
+      /* update of ship*/
     for (let i = 0; i < game.list_ship.length; i++) {
       game.list_ship[i].ride(i,game)
       game.list_ship[i].scale(i,game)
+    }
+    /* update of explosion*/
+    for (let v = 0; v < game.list_explo.length; v++){
+      game.list_explo[v].update(v, game)
+    }
+    /* update of the shield*/
+    if(game.shield_reload < 0){
+      game.shield_reload = 300
+      game.shield = 6
+    }
+    else {
+      game.shield_reload --
     }
 }
 /*
@@ -422,35 +467,42 @@ function lifeBar(){
     //gameOver()
   }*/
   let coeur = document.querySelectorAll('.life')
-  switch(game.life){
-    case 1:
-      coeur[0].style.display = "none"
-      game.life -= 1
-      gameOver()
+  if(game.shield<0){
+    switch(game.life){
+      case 1:
+        coeur[0].style.display = "none"
+        game.life -= 1
+        gameOver()
+        break
+      case 2:
+        coeur[0].setAttribute('src', "images/lifeDown.png")
+        game.life -= 1
+        break
+      case 3:
+        coeur[1].style.display = "none"
+        game.life -= 1
       break
-    case 2:
-      coeur[0].setAttribute('src', "images/lifeDown.png")
+      case 4:
+      coeur[1].setAttribute('src', "images/lifeDown.png")
       game.life -= 1
       break
-    case 3:
-      coeur[1].style.display = "none"
+      case 5:
+      coeur[2].style.display = "none"
       game.life -= 1
-    break
-    case 4:
-    coeur[1].setAttribute('src', "images/lifeDown.png")
-    game.life -= 1
-    break
-    case 5:
-    coeur[2].style.display = "none"
-    game.life -= 1
-    break
-    case 6:
-    coeur[2].setAttribute('src', "images/lifeDown.png")
-    game.life -= 1
-    break
-    default:
-      return
+      break
+      case 6:
+      coeur[2].setAttribute('src', "images/lifeDown.png")
+      game.life -= 1
+      break
+      default:
+        return
+    }
   }
+    else {
+
+      game.shield--
+  }
+
 }
 /*--------collision_check----------*/
 function collision_check(ax, ah, bx, bh) {
@@ -505,5 +557,3 @@ window.addEventListener("keydown", function (event) {
   // Cancel the default action to avoid it being handled twice
   event.preventDefault()
 }, true)
-
-

@@ -26,24 +26,11 @@ h3{
   font-family: 'HomepageBaukasten', 'Arial', sans-serif;
 }
 
-h4{
-  margin-top: 50px;
-  font-family: 'HomepageBaukasten', 'Arial', sans-serif;
-  width: 1100px;
-  text-align: center;
-  color: red;
-  font-size: 50px;
-}
-
 p{
   text-align: justify;
   font-family: 'HomepageBaukasten', 'Arial', sans-serif;
 }
 
-.space{
-  background-image: url('../images/space.png');
-  background-size: cover;
-}
 
 /* HEADER */
 
@@ -167,6 +154,7 @@ p{
   color: #CECE1E;
   font-size: 40px;
 }
+
 /*arrow scroll*/
 /* section {
   position: relative;
@@ -245,10 +233,30 @@ section::after {
   }
 }*/
 
+.space{
+  background-image: url('../images/space.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 0;
+  margin-top: -60px;
+}
 
+h4{
+  margin-top: 0px;
+  font-family: 'Strasua', 'Arial', sans-serif;
+  width: 1100px;
+  text-align: center;
+  color: red;
+  font-size: 50px;
+  padding-top: 50px;
+}
 
 .story{
   margin-top: 60px;
+  background-color: white;
+  opacity: 0.78;
+  z-index: 1;
+  border-radius: 5%;
 }
 
 img{
@@ -256,30 +264,30 @@ img{
 }
 
 .story h3{
-  color:blue;
-  font-size: 25px;
+  color:black;
+  font-size: 30px;
   font-family: 'HomepageBaukasten', sans-serif;
-  margin-top: 25px;
-  margin-left: 45px;
+  margin-top: 40px;
+  margin-left: 120px;
 }
 
 /*histoire Thanos*/
 .histT{
   display: flex;
   justify-content: space-around;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 }
 
 img#thanos{
-  margin-top: 80px;
+  margin-top: 55px;
   margin-bottom: 10px;
-  margin-left: 60px;
+  width: 490px;
+	height: 320px;
 }
 
 div.thanos{
-  width: 500px;
+  width: 550px;
   height: 20px;
-  margin-right: 50px;
   margin-top: 30px;
 }
 
@@ -288,22 +296,25 @@ div.thanos{
   display: flex;
   justify-content: space-around;
   flex-direction: row-reverse;
-  margin-top: -35px;
+  margin-top: -40px;
 }
 
 img#captain{
-  margin-top: 70px;
-  margin-bottom: 55px;
+  margin-top: 45px;
+  margin-bottom: 35px;
   margin-right: 50px;
+  width: 360px;
+  height: 290px;
 }
 
 div.captain{
   width: 500px;
   height: 20px;
- margin-top: 80px;
+  margin-top: 80px;
 }
 
 p#CapMar, p#storyThanos{
+  line-height: 25px;
   border-style: solid;
   border-width: 2px;
   border-color: black;
