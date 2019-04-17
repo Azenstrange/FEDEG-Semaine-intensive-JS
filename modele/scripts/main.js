@@ -366,6 +366,14 @@ function config_menu() {
 
 //let game = new Game() // let's start the game
 //config() // let's start the game
+function setDamage(damage = 0){
+  if(max != 0){
+      generateShield.progress.setAttribute('value', game.shield )
+      generateShield.progress.setAttribute('max', 6)}
+  addEventListener('click', function(){
+    generateShield.progress.setAttribute('value', game.shield -= damage)
+  })
+}
 
 /*-----function to refresh -----*/
 function gameOver() {
