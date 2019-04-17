@@ -11,15 +11,17 @@
 }
 
 h1, h2{
-  font-family: 'Strasua', 'Roboto', 'Arial', sans-serif;
+  font-family: 'Strasua', 'Arial', sans-serif;
   color: red;
 }
 
 h3{
   color: red;
+  font-family: 'HomepageBaukasten', 'Arial', sans-serif;
 }
 p{
   text-align: justify;
+  font-family: 'HomepageBaukasten', 'Arial', sans-serif;
 }
 
 /* HEADER */
@@ -188,42 +190,64 @@ section::after {
 }*/
 .story{
   background-color: #fff;
+  margin-top: 60px;
+}
+
+{
+  margin: auto 30px;
 }
 
 img{
   border-radius: 25px;
 }
 
-.hist{
+/*histoire Thanos*/
+
+.story h3{
+  color:;
+  font-size: 40px;
+  font-family: 'HomepageBaukasten',
+}
+
+.histT{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 img#thanos{
-  position: relative;
-  margin: 30px 100px;
+  margin-top: 40px;
+  margin-bottom: 55px;
+  margin-left: 40px;
 }
 
 div.thanos{
-  position: absolute;
   width: 500px;
   height: 20px;
-  /*margin-left: 600px;*/
+}
+
+/*histoire Captain Marvel*/
+.histC{
+  display: flex;
+  justify-content: space-between;
+}
+
+img#captain{
+  margin-top: 40px;
+  margin-bottom: 55px;
+  margin-left: 40px;
 }
 
 div.captain{
   width: 500px;
   height: 20px;
-  margin-left: px;
 }
 
-p.CapMar, p#story{
+p#CapMar, p#storyThanos{
   border-style: solid;
   border-width: 2px;
   border-color: black;
   border-radius: 35px;
   padding: 10px;
-  position: relative;
 }
 
 .bandeAnnonce{
