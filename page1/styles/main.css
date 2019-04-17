@@ -4,6 +4,10 @@
   padding: 0;
 }
 html, body {
+
+}
+
+.container{
   height: 100%;
   margin: 0 auto;
   width: 960px;
@@ -13,16 +17,58 @@ h1, h2{
   font-family: 'Strasua', 'Roboto', 'Arial', sans-serif;
   color: red;
 }
+
+h3{
+  color: red;
+}
 p{
   text-align: justify;
 }
 
+.header{
+  width: 100%;
+  background-color: #010A3C;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  margin-top: 0px;
+}
+
+.header img{
+  width: 150px;
+}
+
+.header h1{
+  font-size: 70px;
+  margin: auto;
+  margin-top: 18px;
+}
+
+.header h2{
+  font-size: 20px;
+  margin: auto;
+}
+
+.PhotoAccueil img{
+  width: 100%;
+}
 /*objectif*/
 .goal{
   width: 500px;
   height: 100px;
 }
 
+.play{
+  text-align: center;
+  border: solid;
+  border-color: red;
+  border-radius: 15px;
+}
+
+.play a{
+  text-decoration: none;
+}
 /*arrow scroll*/
 section {
   position: relative;
