@@ -39,7 +39,7 @@ p{
 .header img{
   width: 150px;
   height: 150px;
-  margin-left: 20px;
+  margin-left: 40px;
   margin-bottom: 40px;
   opacity: 1;
 }
@@ -76,12 +76,18 @@ p{
 
 /*CONTAINER*/
 
+.FondEtoile{
+  background-image:url("../images/etoiles.png");
+  margin-top: -70px;
+}
+
 .goal{
   margin-top: 50px;
 }
 
 .goal h3{
-
+  font-size: 30px;
+  padding-top: 20px;
 }
 
 .goal p{
@@ -104,6 +110,8 @@ p{
   border: solid;
   border-color: red;
   border-radius: 15px;
+  width: 270px;
+  margin: 0 auto;
 }
 
 .play a{
