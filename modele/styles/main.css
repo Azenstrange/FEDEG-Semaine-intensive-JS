@@ -68,23 +68,70 @@ div.life{
   width: 5%;
 }
 
-/* titre page 1 du jeu (function gameOne)*/
+/* First page of the game */
+.titleCaptain , .titleGame, .buttonPlay {
+  font-size: 40px;
+}
+
 .titleCaptain{
   color: #FD0000;
+  display: flex;
+  justify-content: center;
+  margin-top: 98px;
 }
 
 .titleGame{
   color: #FFD700;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0px 40px;
+  margin-top: 90px;
 }
 
-/*
 .starDesign, .starDesign_two{
-  height: 50px;
-  width: auto;
+  height: 70px;
+  width: 100%;
 }
 
 .starDesign_two{
-  display: flex;
-  justify-content: flex-end;
+  margin-top: 70px;
 }
-*/
+
+.buttonPlay{
+  display: flex;
+  justify-content: center;
+  color: #2810E0;
+  text-decoration: none;
+  border: 3px solid #2810E0;
+  padding: 0px 50px;
+  width: 30px;
+  margin: 90px auto;
+}
+
+/*Second page of the game */
+
+.charactersTitle, .howPlay{
+  color: #FD0000;
+  font-size: 20px;
+}
+
+.charactersTitle{
+  margin: 50px 0px;
+  padding: 30px;
+}
+
+.howPlay{
+  margin: 110px 0px;
+  padding: 30px;
+}
+
+.buttonGo{
+  display: flex;
+  justify-content: center;
+  color: #2810E0;
+  text-decoration: none;
+  border: 3px solid #2810E0;
+  padding: 10px 20px;
+  width: 70px;
+  margin: 30px auto; 
+}
