@@ -127,6 +127,7 @@ p{
 #demo{
   margin-right: 100px;
   z-index: 1;
+  height: 450px;
 }
 
 .play{
