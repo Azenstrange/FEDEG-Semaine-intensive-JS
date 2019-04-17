@@ -1,12 +1,4 @@
 /* -------- Variables --------*/
-/*const borne = document.querySelector('.borne')
-const width =  400, height = 600
-let top_player = 82 , bot_player = 0, right_player = 50, left_player =50
-let x = 0
-let ship_nb = 0
-let stopped = false
-let compteur_ship = 0
-const ship_path = ["images/ships/shipOne.gif","images/ships/shipTwo.gif","images/ships/shipThree.gif","images/ships/shipFour.gif", "images/ships/shipFive.gif", "images/ships/shipSix.gif", "images/ships/shipSeven.gif"]
 // Function
 /*
 let gameOne = {
@@ -355,7 +347,7 @@ window.addEventListener("keydown", function (event) {
     case 32:
       let bullet = new Bullet_Marvel(game.player.top_player-5, game.player.left_player, false) // create an bullet
       bullet.display(game) // display the bullet
-      bullet.update(game.x,game) //
+      bullet.update(game.x,game) // start the update
       game.bullets.push(bullet)
       game.x++
       break;
