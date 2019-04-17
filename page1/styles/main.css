@@ -3,9 +3,6 @@
   margin: 0;
   padding: 0;
 }
-html, body {
-
-}
 
 .container{
   height: 100%;
@@ -14,46 +11,97 @@ html, body {
 }
 
 h1, h2{
-  font-family: 'Strasua', 'Roboto', 'Arial', sans-serif;
+  font-family: 'Strasua', 'Arial', sans-serif;
   color: red;
 }
 
 h3{
   color: red;
+  font-family: 'HomepageBaukasten', 'Arial', sans-serif;
 }
 p{
   text-align: justify;
+  font-family: 'HomepageBaukasten', 'Arial', sans-serif;
 }
+
+/* HEADER */
 
 .header{
   width: 100%;
   background-color: #010A3C;
   height: 150px;
   display: flex;
-  flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-around;
+  position:absolute;
+  z-index: 1;
   margin-top: 0px;
+  opacity: 0.9;
 }
 
 .header img{
   width: 150px;
+  height: 150px;
+  margin-left: 40px;
+  margin-bottom: 40px;
+  opacity: 1;
 }
 
-.header h1{
-  font-size: 70px;
-  margin: auto;
-  margin-top: 18px;
+.MarvelSpace{
+  font-size: 80px;
 }
 
-.header h2{
-  font-size: 20px;
-  margin: auto;
+.needYou{
+  font-size: 22px;
+  margin-top: 60px;
+  margin-right: 100px;
+}
+
+.TitleAndPicture{
+  margin-top: 17px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.TheGame{
+  margin-left: 340px;
+  margin-top: -10px;
+  color: #CECE1E;
 }
 
 .PhotoAccueil img{
   width: 100%;
+  position: relative;
+  margin-top: 0px;
+  z-index: 0;
 }
+
+/*CONTAINER*/
+
+.FondEtoile{
+  background-image:url("../images/etoiles.png");
+  margin-top: -70px;
+}
+
+.goal{
+  margin-top: 50px;
+}
+
+.goal h3{
+  font-size: 30px;
+  padding-top: 20px;
+}
+
+.goal p{
+  margin-top: 20px;
+}
+
+.play{
+  margin-top: 40px;
+}
+
 /*objectif*/
+
 .goal{
   width: 500px;
   height: 100px;
@@ -64,13 +112,15 @@ p{
   border: solid;
   border-color: red;
   border-radius: 15px;
+  width: 270px;
+  margin: 0 auto;
 }
 
 .play a{
   text-decoration: none;
 }
 /*arrow scroll*/
-section {
+/* section {
   position: relative;
   width: 0 auto;
   height: 20px;
@@ -145,4 +195,82 @@ section::after {
     transform: rotate(-45deg) translate(-20px, 20px);
     opacity: 0;
   }
+}*/
+.story{
+  background-color: #fff;
+  margin-top: 60px;
+}
+
+{
+  margin: auto 30px;
+}
+
+img{
+  border-radius: 25px;
+}
+
+/*histoire Thanos*/
+
+.story h3{
+  color:;
+  font-size: 40px;
+  font-family: 'HomepageBaukasten',
+}
+
+.histT{
+  display: flex;
+  justify-content: space-between;
+}
+
+img#thanos{
+  margin-top: 40px;
+  margin-bottom: 55px;
+  margin-left: 40px;
+}
+
+div.thanos{
+  width: 500px;
+  height: 20px;
+}
+
+/*histoire Captain Marvel*/
+.histC{
+  display: flex;
+  justify-content: space-between;
+}
+
+img#captain{
+  margin-top: 40px;
+  margin-bottom: 55px;
+  margin-left: 40px;
+}
+
+div.captain{
+  width: 500px;
+  height: 20px;
+}
+
+p#CapMar, p#storyThanos{
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  border-radius: 35px;
+  padding: 10px;
+}
+
+.bandeAnnonce{
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+video{
+  width: 854px;
+  height: 480px;
+  margin: 50px;
+  border-color: black;
+  border-style: solid;
+}
+
+button{
+  border-radius: 15%;
 }
