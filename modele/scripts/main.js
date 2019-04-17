@@ -97,11 +97,14 @@ let gameTwo ={
 /* -------- Class --------*/
 class Player{
   constructor(left_player,top_player,life,speed){
-    this.left_player = left_player,
-    this.top_player = top_player,
-    this.speed = speed,
-    this.life = life
+    this.left_player = left_player, //position y of the player
+    this.top_player = top_player, // position x of the player
+    this.life = life // life of the player
   }
+
+  /*
+    display the player in the game
+  */
   display(game) {
     let captain_img = document.createElement('img')
     captain_img.setAttribute("src", "images/marvelart.gif")
@@ -109,6 +112,7 @@ class Player{
     game.borne.appendChild(captain_img)
   }
   /*
+  update the position of the player in the game
   */
   update(game) {
     let player_style = document.querySelector('.player_style')
@@ -129,6 +133,9 @@ class Player{
     }
   }
   }
+  /*
+  to move the player
+  */
   move(mouv){
     switch (mouv) {
       case "left":
