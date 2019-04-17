@@ -25,9 +25,24 @@ h3{
   color: red;
   font-family: 'HomepageBaukasten', 'Arial', sans-serif;
 }
+
+h4{
+  margin-top: 50px;
+  font-family: 'HomepageBaukasten', 'Arial', sans-serif;
+  width: 1100px;
+  text-align: center;
+  color: red;
+  font-size: 50px;
+}
+
 p{
   text-align: justify;
   font-family: 'HomepageBaukasten', 'Arial', sans-serif;
+}
+
+.space{
+  background-image: url('../images/space.png');
+  background-size: cover;
 }
 
 /* HEADER */
@@ -222,9 +237,7 @@ section::after {
   }
 }*/
 
-.container2 h2{
-  margin-left: 70px;
-}
+
 
 .story{
   margin-top: 60px;
