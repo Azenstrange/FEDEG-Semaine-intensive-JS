@@ -1,5 +1,5 @@
 /* -------- Variables --------*/
-const borne = document.createElement('div')
+/*const borne = document.querySelector('.borne')
 const width =  400, height = 600
 let top_player = 82 , bot_player = 0, right_player = 50, left_player =50
 let x = 0
@@ -50,50 +50,72 @@ let gameOne = {
 /* -------- Class --------*/
 
 class Player{
-  constructor(right_player,left_player,top_player,bot_player,life,speed){
-    this.right_player = right_player,
+  constructor(left_player,top_player,life,speed){
     this.left_player = left_player,
     this.top_player = top_player,
-    this.bot_player = bot_player,
     this.speed = speed,
     this.life = life
   }
-  display() {
+  display(game) {
     let captain_img = document.createElement('img')
     captain_img.setAttribute("src", "images/marvelart.gif")
     captain_img.classList.add('player_style')
-    borne.appendChild(captain_img)
+    game.borne.appendChild(captain_img)
   }
-  update() {
+  /*
+  */
+  update(game) {
     let player_style = document.querySelector('.player_style')
     player_style.style.top = this.top_player + '%'
-    player_style.style.bot = this.bot_player + '%'
-    player_style.style.right = this.right_player + '%'
     player_style.style.left = this.left_player + '%'
+    let ship_liste_query = document.querySelectorAll(`.ship${game.ship_nb}`)
+    for (let i = 0; i < ship_liste_query.length; i++) {
+      let top= parseInt(ship_liste_query[i].style.top.substring(0,ship_liste_query[i].style.top.length-1))
+      let left= parseInt(ship_liste_query[i].style.left.substring(0,ship_liste_query[i].style.left.length-1))
+
+      if((ship_liste_query[i].style.display != "none")&&(collision_check(this.top_player,this.left_player,top, left))){
+        this.lifeBar()
+        ship_liste_query[i].style.display="none"
+        if(game.compteur_ship > 0){
+          game.compteur_ship -=1
+        }
+        ship_liste_query[i].style.top = "100%"
+    }
   }
-  left(){
-    this.left_player -= 1
-    this.right_player += 1
   }
-  right(){
-    this.left_player += 1
-    this.right_player -= 1
+  move(mouv){
+    switch (mouv) {
+      case "left":
+        this.left_player -= 4
+        break
+      case "right":
+        this.left_player += 4
+        break
+      case "top":
+        this.top_player -= 2
+        break
+      case "bot":
+        this.top_player += 2
+      default:
+        return
+    }
   }
-  top(){
-    this.top_player -= 1
-    this.bot_player += 1
-  }
-  bot(){
-    this.bot_player -= 1
-    this.top_player += 1
-  }
+
   lifeBar(){
+    /*let coeur = document.querySelector('.heart_main')
+    let size = parseInt(coeur.style.width.substring(0,coeur.style.width.length -2))
+    if (size > 0) {
+       coeur.style.width = size -25 + "px"
+    }
+    else {
+      //gameOver()
+    }*/
     let coeur = document.querySelectorAll('.life')
     switch(this.life){
       case 1:
         coeur[0].style.display = "none"
         this.life -= 1
-        //gameOver()
+        gameOver()
         break
       case 2:
         coeur[0].setAttribute('src', "images/lifeDown.png")
@@ -123,39 +145,34 @@ class Player{
 
 // Vaisseaux ennemis
 class Ship{
-  constructor(type_ship, fire,top_ship = 25, bot_ship = 10, right_ship = 50, left_ship = 45){
+  constructor(type_ship, fire,top_ship = 25, left_ship = 45){
       this.type_ship = type_ship
       this.fire = fire
       this.top_ship = top_ship
-      this.bot_ship = bot_ship
-      this.right_ship = right_ship
       this.left_ship = left_ship
   }
-  display(){
+  display(game){
       let shipImg = document.createElement('img')
       shipImg.setAttribute('src', this.type_ship)
-      shipImg.setAttribute('class', 'ship'+ ship_nb)
+      shipImg.setAttribute('class', 'ship'+ game.ship_nb)
       shipImg.classList.add('ship_image')
-      borne.appendChild(shipImg)
+      game.borne.appendChild(shipImg)
     }
-    scale(y){
-      let ship_liste_query = document.querySelectorAll(`.ship${ship_nb}`)
+    scale(y,game){
+      let ship_liste_query = document.querySelectorAll(`.ship${game.ship_nb}`)
       let ship_image = ship_liste_query[y]
       ship_image.style.top = this.top_ship + '%'
-      ship_image.style.bot = this.bot_ship + '%'
-      ship_image.style.right = this.right_ship + '%'
       ship_image.style.left = this.left_ship + '%'
     }
-    ride(y){
-      let ship_liste_query = document.querySelectorAll(`.ship${ship_nb}`)
+    ride(y,game){
+      let ship_liste_query = document.querySelectorAll(`.ship${game.ship_nb}`)
       let ship_image = ship_liste_query[y]
       if(this.top_ship<99){
       this.top_ship += 1
       }
-      else if((this.top_ship==99)&& (ship_image.style.display != "none") && (compteur_ship > 0)) {
+      else if((this.top_ship==99)&& (ship_image.style.display != "none") && (game.compteur_ship > 0)) {
         this.top_ship += 1
-        compteur_ship -=1
-        console.log(compteur_ship)
+        game.compteur_ship -=1
       }
       else {
 
@@ -167,47 +184,44 @@ class Ship{
 
 /*-----------Bullet class----------*/
 class Bullet_Marvel{
-  constructor(position_bullet_top, position_bullet_bot, position_bullet_right, position_bullet_left, ennemi){
+  constructor(position_bullet_top, position_bullet_left, ennemi){
     this.position_bullet_top = position_bullet_top,
-    this.position_bullet_bot = position_bullet_bot,
-    this.position_bullet_right = position_bullet_right,
     this.position_bullet_left = position_bullet_left,
     this.ennemi = ennemi
   }
-  display(){
+  display(game){
     if(!this.ennemi){
       let bullet = document.createElement('img')
       bullet.setAttribute('src', "images/energy.png")
-      bullet.setAttribute('id', x)
+      bullet.setAttribute('id', game.x)
       bullet.classList.add(`bullet`)
-      borne.appendChild(bullet)
+      game.borne.appendChild(bullet)
 
     }
     else {
       let bullet = document.createElement('img')
       bullet.setAttribute('src', "images/energy.png")
       bullet.classList.add('ship_image')
-      borne.appendChild(bullet)
+      game.borne.appendChild(bullet)
 
     }
   }
-  update(y) {
+  update(y, game) {
     let bulletstyle = document.getElementById(y)
-    let ship_liste_query = document.querySelectorAll(`.ship${ship_nb}`)
+    let ship_liste_query = document.querySelectorAll(`.ship${game.ship_nb}`)
     if(bulletstyle.style.display != "none"){
       for (let i = 0; i < ship_liste_query.length; i++) {
       let top= parseInt(ship_liste_query[i].style.top.substring(0,ship_liste_query[i].style.top.length-1))
 
-      let right= parseInt(ship_liste_query[i].style.right.substring(0,ship_liste_query[i].style.right.length-1))
+
       let left= parseInt(ship_liste_query[i].style.left.substring(0,ship_liste_query[i].style.left.length-1))
 
-      if((ship_liste_query[i].style.display != "none")&&(aabb(this.position_bullet_top,this.position_bullet_right,this.position_bullet_left,top, right, left))){
+      if((ship_liste_query[i].style.display != "none")&&(collision_check(this.position_bullet_top,this.position_bullet_left,top, left))){
         bulletstyle.style.display = "none"
         ship_liste_query[i].style.display="none"
-        if(compteur_ship > 0){
-          compteur_ship -=1
+        if(game.compteur_ship > 0){
+          game.compteur_ship -=1
         }
-        console.log(compteur_ship)
         ship_liste_query[i].style.top = "100%"
       }
     }
@@ -215,11 +229,7 @@ class Bullet_Marvel{
     if((this.position_bullet_top>0) && (bulletstyle.style.display != "none") )
     {
       this.position_bullet_top -= 5
-
-
       bulletstyle.style.top = this.position_bullet_top + '%'
-      bulletstyle.style.bot = this.position_bullet_bot + '%'
-      bulletstyle.style.right = this.position_bullet_right + '%'
       bulletstyle.style.left = this.position_bullet_left + '%'
     }
     else{
@@ -227,127 +237,128 @@ class Bullet_Marvel{
     }
   }
 }
-
+class Game{
+  constructor(){
+    this.borne = document.querySelector('.borne'), //select the div containing the game
+    this.top_player = 82,// x of
+    this.left_player =50,
+    this.stopped = false,
+    this.x = 0,
+    this.ship_nb = 0,
+    this.stopped = false,
+    this.compteur_ship = 0,
+    this.ship_path = ["images/ships/shipOne.gif","images/ships/shipTwo.gif","images/ships/shipThree.gif","images/ships/shipFour.gif", "images/ships/shipFive.gif", "images/ships/shipSix.gif", "images/ships/shipSeven.gif"]
+    this.player = new Player(this.left_player, this.top_player, 6),
+    this.bullets = [],
+    this.list_ship = []
+  }
+}
 /* -------- Initialisation --------*/
 
-const player = new Player(right_player, left_player, top_player, bot_player, 6);
-const bullets = []
-let list_ship = []
-
-
+let game = new Game()
 config()
-function init() {
+
+/*-----function to refresh -----*/
+function gameOver() {
+  game.stopped = true
+}
+function init() { //start the loot for the refresh
 
   var loop = setInterval(function() {
-      if(!stopped) {
-        update()
+      if(!game.stopped) {
+        update(game)
         }
-    }, 1000/15)
+    }, 50)
 }
 function resetship(){
-  list_ship =[]
+  game.list_ship =[]
   for (let v = 0; v < 5; v++) {
     //positionShip, fire,top_ship = 25, bot_ship = 10, right_ship = 50, left_ship = 45
     let top_rand = Math.floor(Math.random()*(10)+0)
-    let bot_rand = Math.floor(Math.random()*(80)+80)
     let left_rand = Math.floor(Math.random()*(80)+10)
-    let right_rand = Math.floor(Math.random()*(80)+10)
     let rand_ship = Math.floor(Math.random()*7)
-    const ship = new Ship(ship_path[rand_ship], 1, top_rand, bot_rand, left_rand, right_rand)
-    list_ship.push(ship)
-}
+    const ship = new Ship(game.ship_path[rand_ship], 1, top_rand, left_rand)
+    game.list_ship.push(ship)
+  }
 }
 function config() {
-  borne.classList.add("borne")
-  document.body.appendChild(borne)
   //gameOne.display()
   display()
   init()
 }
 function display() {
-    player.display()
-    console.log(compteur_ship)
+    game.player.display(game)
 }
 function displayship(){
-  for (let i = 0; i < list_ship.length; i++) {
-    list_ship[i].display()
+  for (let i = 0; i < game.list_ship.length; i++) {
+    game.list_ship[i].display(game)
   }
 }
 function update() {
-    player.update()
-    if(compteur_ship==0){
+    game.player.update(game)
+    if(game.compteur_ship==0){
        resetship()
-       compteur_ship += 5
-       ship_nb++
+       game.compteur_ship += 5
+       game.ship_nb++
        displayship()
       }
-
-      for (let j = 0; j < bullets.length; j++) {
-        bullets[j].update(j)
+      for (let j = 0; j < game.bullets.length; j++) {
+        game.bullets[j].update(j,game)
       }
-    for (let i = 0; i < list_ship.length; i++) {
-      list_ship[i].ride(i)
-      list_ship[i].scale(i)
+    for (let i = 0; i < game.list_ship.length; i++) {
+      game.list_ship[i].ride(i,game)
+      game.list_ship[i].scale(i,game)
     }
-
-
 }
 
 
-/*---------Movement---------*/
-function aabb(ax,  aw, ah, bx,  bw, bh) {
+/*--------Gestion des collisions----------*/
+function collision_check(ax, ah, bx, bh) {
            let top = bx - ax
-
-
-           let right = bw - aw
-
            let left = bh - ah
-
-           if((top>0 && top < 20) && (right>-20 && right < 20) && (left>-20 && left < 20)){
+           if((top>0 && top < 20) && (left>-10 && left < 10)){
              return true
            }
            else {
              return false
            }
        }
-
+/*---------Movement---------*/
 window.addEventListener("keydown", function (event) {
   if (event.defaultPrevented) {
     return // Do nothing if the event was already processed
   }
-
   switch (event.keyCode) {
     case 40:
-      if((player.bot_player >= 0)){
-        player.bot()
- //temporaire pour les testsx
+      if((game.player.top_player < 87)){
+        game.player.move("bot") //movement to the bottom
+
       }
       break
     case 38:
-      if ((player.top_player >= 0)) {
-        player.top()
+      if ((game.player.top_player >= 0)) {
+        game.player.move("top")//movement to the top
 
       }
       break
     case 37:
-      if ((player.left_player >= 0)) {
-        player.left()
-
+      if ((game.player.left_player >= 0)) {
+        game.player.move("left")//movement to the left
       }
       break
     case 39:
-      if ((player.right_player >= 14)) {
-        player.right()
+      if ((game.player.left_player < 86)) {
+        game.player.move("right")//movement to the right
 
       }
       break
-      case 32:
-        let bullet = new Bullet_Marvel(player.top_player-5, player.bot_player, player.right_player, player.left_player, false)
-        bullet.display()
-        bullet.update(x)
-        bullets.push(bullet)
-        x++
-        break;
+    case 32:
+      let bullet = new Bullet_Marvel(game.player.top_player-5, game.player.left_player, false) // create an bullet
+      bullet.display(game) // display the bullet
+      bullet.update(game.x,game) //
+      game.bullets.push(bullet)
+      game.x++
+      break;
     default:
       return // Quit when this doesn't handle the key event.
   }
@@ -357,7 +368,3 @@ window.addEventListener("keydown", function (event) {
 
 
 // Initialisation vaisseaux
-
-function scale() {
-    ship.scale()
-}

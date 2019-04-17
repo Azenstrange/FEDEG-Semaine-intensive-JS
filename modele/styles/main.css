@@ -20,7 +20,10 @@ body{
   background-position: center;
   background-attachment: fixed;
 }
-
+.heart_main{
+  width:140px;
+  height:40px;
+}
 .borne{
   position: absolute;
   height: 100%;
@@ -38,6 +41,8 @@ body{
 .player_style{
   position: absolute;
   margin: auto;
+  top: 82;
+  left: 50;
 
   border: 1px solid #000;
 }
@@ -55,12 +60,12 @@ body{
 }
 
 div.life{
-  display:flex;
-  justify-content: flex-end;
+
 }
 .bullet{
   position: absolute;
   margin: auto;
+  width: 5%;
 }
 
 /* titre page 1 du jeu (function gameOne)*/
