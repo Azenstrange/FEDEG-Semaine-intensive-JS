@@ -153,7 +153,32 @@ class Player{
   }
 }
 
+class Explosion{
+  constructor(top_ship, left_ship, count = 1){
+    this.top_ship = top_ship,
+    this.left_ship = left_ship,
+    this.count = count
+  }
+  display(game){
+      let explo_img = document.createElement('img')
+      explo_img.setAttribute('src', 'images/ships/explosion.gif')
+      explo_img.setAttribute('class', 'explosion')
+      explo_img.classList.add('ship_image')
+      game.borne.appendChild(explo_img)
+      explo_img.style.top = this.top_ship + '%'
+      explo_img.style.left = this.left_ship + '%'
 
+    }
+    update(explo, game){
+      let explosi = document.querySelectorAll('.explosion')
+      if(this.count > 12){
+        explosi[explo].style.display = "none"
+      }
+      else {
+        this.count += 1
+      }
+    }
+  }
 // Vaisseaux ennemis
 class Ship{
   constructor(type_ship, fire,top_ship = 25, left_ship = 45){
@@ -249,6 +274,9 @@ class Bullet_Marvel{
 
       if((!this.ennemi)&&(ship_liste_query[i].style.display != "none")&&(collision_check(this.position_bullet_top,this.position_bullet_left,top, left))){
         bulletstyle.style.display = "none"
+        let explosion = new Explosion(top,left)
+        explosion.display(game)
+        game.list_explo.push(explosion)
         ship_liste_query[i].style.display="none"
         if(game.compteur_ship > 0){
           game.compteur_ship -=1
@@ -295,7 +323,8 @@ class Game{
     this.ship_path = ["images/ships/shipOne.gif","images/ships/shipTwo.gif","images/ships/shipThree.gif","images/ships/shipFour.gif", "images/ships/shipFive.gif", "images/ships/shipSix.gif", "images/ships/shipSeven.gif"] // the skin of ennemi ship
     this.player = new Player(this.left_player, this.top_player), // to set the player
     this.bullets = [], // a tab containing the active bullets
-    this.list_ship = [] // a tab containing the active ennemi ships
+    this.list_ship = [], // a tab containing the active ennemi ships
+    this.list_explo = []
   }
 }
 /* -------- Initialisation --------*/
@@ -401,12 +430,18 @@ function update() {
        game.ship_nb++
        displayship()
       }
+      /*update of bullets*/
       for (let j = 0; j < game.bullets.length; j++) {
         game.bullets[j].update(j,game)
       }
+      /* update of ship*/
     for (let i = 0; i < game.list_ship.length; i++) {
       game.list_ship[i].ride(i,game)
       game.list_ship[i].scale(i,game)
+    }
+    /* update of explosion*/
+    for (let v = 0; v < game.list_explo.length; v++){
+      game.list_explo[v].update(v, game)
     }
 }
 /*
@@ -505,5 +540,3 @@ window.addEventListener("keydown", function (event) {
   // Cancel the default action to avoid it being handled twice
   event.preventDefault()
 }, true)
-
-
