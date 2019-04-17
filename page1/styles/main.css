@@ -88,35 +88,45 @@ p{
 /*CONTAINER*/
 .FondEtoile{
   background-image:url("../images/etoiles.png");
-  margin-top: -70px;
+  margin-top: -200px;
   height: 950px;
 }
 
-.goal{
-  margin-top: 50px;
-  padding-top: 50px;
-}
 
 .goal h3{
+  font-family: 'Strasua', 'Arial', sans-serif;
+  text-align: center;
   color: red;
   width: 1100px;
-  text-align: center;
   font-size: 50px;
-  margin-top: 50px;
+  margin-top: 170px;
+  padding-top: 100px;
 }
 
-.goal p{
+.textAndDemo p{
+  margin-top: -20px;
   line-height: 70px;
   font-size: 27px;
-  margin-top: 60px;
+  width: 500px;
   color: white;
 }
 
 
 /*objectif*/
-.goal{
-  width: 500px;
-  height: 100px;
+
+
+
+.textAndDemo{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-top: 50px;
+  height: 600px;
+}
+
+#demo{
+  margin-right: 100px;
+  z-index: 1;
 }
 
 .play{
@@ -126,7 +136,8 @@ p{
   border-radius: 15px;
   width: 450px;
   margin: 0 auto;
-  margin-top: 600px;
+  margin-top: -90px;
+  margin-bottom: 70px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -224,7 +235,8 @@ section::after {
 
 .space{
   background-image: url('../images/space.jpg');
-  background-size: contain;
+  background-position: top;
+  background-size: 1488px 980px;
   background-repeat: no-repeat;
   z-index: 0;
   margin-top: -60px;
