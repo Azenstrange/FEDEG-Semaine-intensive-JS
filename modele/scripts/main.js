@@ -42,12 +42,14 @@ let gameOne = {
 /* -------- Class --------*/
 
 class Player{
-  constructor(left_player,top_player,life,speed){
-    this.left_player = left_player,
-    this.top_player = top_player,
-    this.speed = speed,
-    this.life = life
+  constructor(left_player,top_player,life){
+    this.left_player = left_player, // position y of player
+    this.top_player = top_player, // position x of player
+    this.life = life //the hitpoint
   }
+  /*
+  display the player in the game
+  */
   display(game) {
     let captain_img = document.createElement('img')
     captain_img.setAttribute("src", "images/marvelart.gif")
@@ -55,6 +57,7 @@ class Player{
     game.borne.appendChild(captain_img)
   }
   /*
+  update the player in the game
   */
   update(game) {
     let player_style = document.querySelector('.player_style')
@@ -75,6 +78,9 @@ class Player{
     }
   }
   }
+  /*
+  
+  */
   move(mouv){
     switch (mouv) {
       case "left":
@@ -240,7 +246,7 @@ class Game{
     this.stopped = false,
     this.compteur_ship = 0,
     this.ship_path = ["images/ships/shipOne.gif","images/ships/shipTwo.gif","images/ships/shipThree.gif","images/ships/shipFour.gif", "images/ships/shipFive.gif", "images/ships/shipSix.gif", "images/ships/shipSeven.gif"]
-    this.player = new Player(this.left_player, this.top_player, 6),
+    this.player = new Player(this.left_player, this.top_player),
     this.bullets = [],
     this.list_ship = []
   }
@@ -348,9 +354,9 @@ window.addEventListener("keydown", function (event) {
       let bullet = new Bullet_Marvel(game.player.top_player-5, game.player.left_player, false) // create an bullet
       bullet.display(game) // display the bullet
       bullet.update(game.x,game) // start the update
-      game.bullets.push(bullet)
-      game.x++
-      break;
+      game.bullets.push(bullet) //put the bullet in the bullet list
+      game.x++ // update the counter
+      break
     default:
       return // Quit when this doesn't handle the key event.
   }
