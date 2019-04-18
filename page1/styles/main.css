@@ -10,8 +10,8 @@ html {
 
 section {
   position: relative;
-  width: 10px;
-  height: 10px;
+  width: 5px;
+  height: 5px;
   margin: 0 auto;
   background-color: blue;
 }
