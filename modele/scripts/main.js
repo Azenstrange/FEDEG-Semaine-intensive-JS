@@ -1,5 +1,22 @@
-/* -------- Variables --------*/
-// Function
+/* Music play */
+let soundActive = document.querySelector(".soundActive")
+let soundtrack = document.querySelector(".soundtrack")
+let soundOff = 0
+soundActive.addEventListener(
+  'click',
+  function(){
+    if(soundOff == 0){
+      soundtrack.play()
+      soundOff = 1
+    }
+    else{
+      soundtrack.pause()
+      soundOff = 0
+    }
+  }
+)
+
+/* Functions */
 // Beginning of the game "Marvel Space" and button Play
 let gameOne = {
   display(borne){
@@ -72,16 +89,28 @@ let gameTwo ={
       starImg.setAttribute ("src", "images/logoStar_up.png")
       let starImg_two = document.createElement ('img')
       starImg_two.setAttribute ("src", "images/logoStar_down.png")
+      let characMarvel = document.createElement('img')
+      characMarvel.setAttribute ("src", "images/marvelart.png" )
+      let characThanos = document.createElement ('img')
+      characThanos.setAttribute("src", "images/thanos_attack.png")
+      let characShip = document.createElement ('img')
+      characShip.setAttribute("src", "images/spaceship-pixelart.png")
 
       // Attribution of classes
       starImg.classList.add("starDesign")
       starImg_two.classList.add("starDesign_two")
       charactersTitle.classList.add("charactersTitle")
+      characMarvel.classList.add("characMarvel")
+      characThanos.classList.add("characThanos")
+      characShip.classList.add("characShip")
       howPlay.classList.add("howPlay")
 
       // Iniatialisation
       pageTwo.appendChild(starImg)
       pageTwo.appendChild(charactersTitle)
+      pageTwo.appendChild(characMarvel)
+      pageTwo.appendChild(characThanos)
+      pageTwo.appendChild(characShip)
       pageTwo.appendChild(howPlay)
       divButton.appendChild(button)
       pageTwo.appendChild(divButton)
@@ -138,10 +167,10 @@ class Player{
   move(mouv){
     switch (mouv) {
       case "left":
-        this.left_player -= 6
+        this.left_player -= 5
         break
       case "right":
-        this.left_player += 6
+        this.left_player += 5
         break
       case "top":
         this.top_player -= 2
@@ -235,6 +264,38 @@ class Ship{
     }
 
 }
+/*---------Thanos, the boss ----------*/
+class Thanos {
+  constructor() {
+    this.position_x = 10,
+    this.position_y = 50
+  }
+  display(game){
+    let shipImg = document.createElement('img')
+    shipImg.setAttribute('src', "images/marvelfire.png")
+    shipImg.setAttribute('class', 'thanos')
+    shipImg.classList.add('ship_image')
+    game.borne.appendChild(shipImg)
+  }
+  update(game){
+    console.log("thanosupdate")
+    let thanos = document.querySelector(`.thanos`)
+    if(thanos != null){
+      thanos.style.top = this.position_x +'%'
+      thanos.style.left = this.position_y + '%'
+    }
+  }
+  fire(game){
+    let bullet = new Bullet_Marvel(this.position_x-5, this.position_y, true) // create an bullet
+    bullet.display(game) // display the bullet
+    bullet.update(game.x,game) // start the update
+    game.bullets.push(bullet) //put the bullet in the bullet list
+    game.x++ // update the counter
+  }
+
+}
+
+
 /*-----------Bullet class----------*/
 class Bullet_Marvel{
   constructor(position_bullet_top, position_bullet_left, ennemi){
@@ -267,6 +328,7 @@ class Bullet_Marvel{
   update(y, game) {
     let bulletstyle = document.getElementById(y)
     let ship_liste_query = document.querySelectorAll(`.ship${game.ship_nb}`)
+    let thanos = document.querySelector('.thanos')
     if(bulletstyle.style.display != "none"){
       for (let i = 0; i < ship_liste_query.length; i++) {
       let top= parseInt(ship_liste_query[i].style.top.substring(0,ship_liste_query[i].style.top.length-1))
@@ -291,6 +353,16 @@ class Bullet_Marvel{
         setDamage(1)
         lifeBar()
       }
+      if(thanos != null){
+        let left_t= parseInt(thanos.style.left.substring(0,thanos.style.left.length-1))
+        let top_t= parseInt(thanos.style.top.substring(0,thanos.style.top.length-1))
+        if((!this.ennemi)&&(bulletstyle.style.display != "none")&&((collision_check(this.position_bullet_top,this.position_bullet_left, top_t, left_t)))){
+          bulletstyle.style.display = "none"
+          game.score += 2000
+          thanos_hitpoint()
+        }
+    }
+
     }
 
   }
@@ -332,7 +404,14 @@ class Game{
     this.shield = 6, // the value of the shield
     this.shield_reload = 600, //the time for the shield to refresh
     this.score = 0,
-    this.progress = document.querySelector('#avancement')
+    this.progress = document.querySelector('#avancement'),
+    this.level = 1,
+    this.nb_ennemi = 3,
+    this.frame_counter = 0,
+    this.thanos_life = 6,
+    this.thanos = new Thanos(),
+    this.thanos_is_present = false,
+    this.frame_counter_second= 0
   }
 }
 /* -------- Initialisation --------*/
@@ -401,20 +480,20 @@ function gameOver() {
   }
 
 }
-function init() { //start the loot for the refresh
+function init() { //start the loop for the refresh
 
   var loop = setInterval(function() {
       if(!game.stopped) {
         update(game)
         }
-    }, 40)
+    }, 50)
 }
 /*
 if the wave is finish we send a new one
 */
 function resetship(){
   game.list_ship =[]
-  for (let v = 0; v < 5; v++) {
+  for (let v = 0; v < game.nb_ennemi; v++) {
     //positionShip, fire,top_ship = 25, bot_ship = 10, right_ship = 50, left_ship = 45
     let top_rand = Math.floor(Math.random()*(10)+0)
     let left_rand = Math.floor(Math.random()*(80)+10) // to set the position of new ships but random!
@@ -458,8 +537,9 @@ function update() {
     game.player.update(game)
     if(game.compteur_ship==0){
        resetship()
-       game.compteur_ship += 5
+       game.compteur_ship += game.nb_ennemi
        game.ship_nb++
+       game.frame_counter = 0
        displayship()
       }
       /*update of bullets*/
@@ -484,6 +564,59 @@ function update() {
       game.shield_reload --
     }
     setDamage()
+    let shield = document.querySelector('.player_style')
+    if((game.shield != 0)&&(!shield.classList.contains('shieldDesign')))
+    {
+      shield.classList.toggle('shieldDesign')
+    }
+    else if((game.shield == 0)&&(shield.classList.contains('shieldDesign')))
+    {
+      shield.classList.remove('shieldDesign')
+    }
+    if((game.ship_nb%5==0)&&(game.frame_counter == 0)){
+      game.level += 1
+      game.frame_counter = 1
+      game.nb_ennemi ++
+      console.log(game.level)
+    }
+    /*display thanos*/
+    if((game.score != 0)&&((game.score%2000 == 0)||((game.score-50)%2000 == 0))&&(!game.thanos_is_present)){
+      console.log(game.score%2000 == 0)
+      game.thanos.display(game)
+      game.thanos_is_present = true
+      game.thanos_life = 3
+    }
+    /*update thanos*/
+    let thanos = document.querySelector('.thanos')
+    if(thanos != null)
+    {
+      /*change the position of thanos*/
+      if((game.ship_nb%3==0)&&(game.frame_counter_second== 0)){
+          let left_rand = Math.floor(Math.random()*(80)+10)
+          game.thanos.position_y = left_rand
+          game.thanos.fire(game)
+          game.frame_counter_second= 1
+      }
+      game.thanos.update(game)
+    }
+}
+
+
+
+function thanos_hitpoint(){
+  if(game.thanos_life <= 1)
+  {
+    let thanos = document.querySelector('.thanos')
+    thanos.style.display = "none"
+    thanos.classList.remove('thanos')
+    game.thanos = new Thanos()
+    game.thanos_is_present = false
+  }
+  else {
+    game.thanos_life--
+    game.frame_counter_second = 0
+    console.log(game.thanos_life)
+  }
 }
 /*
 to make the player lose health
@@ -498,7 +631,7 @@ function lifeBar(){
     //gameOver()
   }*/
   let coeur = document.querySelectorAll('.life')
-  if(game.shield<0){
+  if(game.shield<=0){
     switch(game.life){
       case 1:
         coeur[0].style.display = "none"
@@ -558,18 +691,18 @@ window.addEventListener("keydown", function (event) {
       }
       break
     case 38:
-      if ((game.player.top_player >= 0)) {
+      if ((game.player.top_player > 0)) {
         game.player.move("top")//movement to the top
 
       }
       break
     case 37:
-      if ((game.player.left_player >= 0)) {
+      if ((game.player.left_player > 0)) {
         game.player.move("left")//movement to the left
       }
       break
     case 39:
-      if ((game.player.left_player < 86)) {
+      if ((game.player.left_player < 85)) {
         game.player.move("right")//movement to the right
 
       }
