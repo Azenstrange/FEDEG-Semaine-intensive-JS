@@ -32,10 +32,45 @@ body{
   color: #FD0000;
 }
 .heart_main{
-  width:140px;
-  height:40px;
+  margin-right: 0;
+  margin-left: auto;
+  width: 95px;
+  height:20px;
 }
+.heart_main img{
+  width: 25px;
+  height: auto;
+}
+
+.score{
+  width: 140px;
+}
+.score h2{
+  color: blue;
+
+}
+.container{
+  z-index: 100;
+  display: flex;
+justify-content: space-between;
+margin-top: 2%;
+margin-left: 37%;
+margin-right: 37%;
+
+}
+progress{
+  width: 100%;
+}
+
+.vie h2{
+ text-align:right;
+ margin-top: 10%;
+ margin-bottom: 0;
+}
+
+
 .borne{
+  z-index: -1;
   position: absolute;
   height: 100%;
   width: 400px;
@@ -54,7 +89,7 @@ body{
   margin: auto;
   top: 82;
   left: 50;
-
+  width: 10%;
   border: 1px solid #000;
 }
 
@@ -70,12 +105,8 @@ body{
   width: auto;
 }
 
-div.life{
-
-}
 .bullet{
   position: absolute;
-  margin: auto;
   width: 5%;
 }
 
@@ -163,7 +194,7 @@ div.life{
   background-color:rgba(237, 211, 152, 0.3);
   border-radius: 50px;
   border: none;
-  padding: 5px 20px;
+  padding: 5px 10px;
   display: block;
 }
 
@@ -171,7 +202,8 @@ div.life{
 .soundActive{
   cursor: pointer;
 }
-
+.thanos{
+}
 /* test sentence */
 .sentence{
   font-size: 20px;
