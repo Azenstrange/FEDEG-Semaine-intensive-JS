@@ -163,7 +163,7 @@ p{
   margin-top: -40px;
   background-size: 1688px 1174px;
   background-repeat: no-repeat;
-  z-index: 0;
+  z-index: 3;
   margin-top: -60px;
 }
 
@@ -179,16 +179,16 @@ h4{
 .story{
   margin-top: 60px;
   height: 1175px;
-  background-color: rgba(20, 20, 20, 0.7);
+  background-color: rgba(40, 40, 40, 0.6);
   z-index: 1;
 }
-img{
+.story img, .PhotoAccueil img, .story{
   border-radius: 25px;
   opacity: 1;
 }
 
 .story h3{
-  color: #bebebe;
+  color: #dddddd;
   font-size: 30px;
   font-family: 'HomepageBaukasten', sans-serif;
   margin-top: 60px;
@@ -254,20 +254,30 @@ p#CapMar, p#storyThanos{
   padding: 13px;
 }
 
+/*CONTAINER2*/
+.FondEtoile2{
+  background-image:url("../images/etoiles.png");
+  margin-top: -51px;
+  height: 950px;
+}
+
 /*Bande Annonce + Play2*/
 .button{
   display: flex;
   justify-content: space-around;
   margin-top: 50px;
-  height: 500px;
+  padding-top: 50px;
+  height: 150px;
 }
 /*Play2*/
 .play2{
   border: solid;
   border-color: red;
   border-radius: 15px;
-  width: 140px;
-  height: 45px;
+  width: 220px;
+  height: 35px;
+  cursor: pointer;
+  z-index: 3;
 }
 
 .play2 :hover{
@@ -281,7 +291,29 @@ p#CapMar, p#storyThanos{
 .play2 h2{
   text-align: center;
   color: #CECE1E;
-  font-size: 40px;
+  font-size: 30px;
+}
+
+/*Annimation ouverture*/
+.div1{
+  width: 866px;
+  height: 250px;
+  margin-left: 120px;
+  background-image: url("../images/affiche1.png");
+  background-position: center;
+  position: absolute;
+  z-index: 2;
+}
+
+.div2{
+  width: 866px;
+  height: 250px;
+  margin-top: -240px;
+  margin-left: 120px;
+  background-image: url("../images/affiche2.png");
+  background-position: center;
+  position: absolute;
+  z-index: 2;
 }
 
 /*button Bande Annonce*/
@@ -289,16 +321,13 @@ p#CapMar, p#storyThanos{
   border: solid;
   border-color: red;
   border-radius: 15px;
-  width: 250px;
-  height: 75px;
+  width: 450px;
+  height: 35px;
+  cursor: pointer;
 }
 
 .annonceButton :hover{
   color: #03129a;
-}
-
-.annonceButton a{
-  text-decoration: none;
 }
 
 .annonceButton p{
@@ -306,6 +335,15 @@ p#CapMar, p#storyThanos{
   text-align: center;
   color: #CECE1E;
   font-size: 30px;
+}
+
+/*button close*/
+img.close{
+  width: 20px;
+  height: 20px;
+  padding-top: 220px;
+  padding-left: 825px;
+  cursor: pointer;
 }
 
 /*Bande Annonce*/
@@ -317,11 +355,9 @@ p#CapMar, p#storyThanos{
 video#bandeAnnonce{
   width: 854px;
   height: 480px;
-  margin: 50px;
+  margin-top: 0px;
+  margin-left: 120px;
   border-color: black;
   border-style: solid;
-}
-
-button{
-  border-radius: 15%;
+  z-index: 0;
 }
