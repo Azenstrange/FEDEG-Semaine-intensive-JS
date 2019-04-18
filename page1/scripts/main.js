@@ -1,7 +1,7 @@
-let div1= document.querySelector(".div1")
-let div2= document.querySelector(".div2")
-let annonceButton= document.querySelector(".annonceButton")
-let close= document.querySelector(".close")
+let div1=document.querySelector(".div1")
+let div2=document.querySelector(".div2")
+let annonceButton=document.querySelector(".annonceButton")
+let close=document.querySelector(".close")
 
 annonceButton.addEventListener(
   'click',

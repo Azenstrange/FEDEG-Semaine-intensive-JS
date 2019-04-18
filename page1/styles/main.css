@@ -14,22 +14,22 @@ html {
   scroll-behavior: smooth;
 }
 
-section#arrow1{
+div#arrow1{
   position: relative;
   top: 10px;
 }
 
-section#arrow2 {
+div#arrow2 {
   position: relative;
   bottom: 20px;
 }
 
-section#arrow3{
+div#arrow3{
   position: relative;
   top: 50px;
 }
 
-section::after {
+div::after {
   position: absolute;
   bottom: 0;
   left: 0;
