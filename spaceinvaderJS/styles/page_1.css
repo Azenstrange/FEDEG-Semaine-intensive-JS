@@ -22,6 +22,7 @@ body{
 }
 .finalscore_block{
   margin-top: 50%;
+  text-align: center;
 }
 .finalscore{
   height: 90px;
@@ -84,8 +85,8 @@ progress{
 .player_style{
   position: absolute;
   margin: auto;
-  top: 82;
-  left: 50;
+  top: 82px;
+  left: 50px;
   width: 10%;
   border: 1px solid #000;
 }
