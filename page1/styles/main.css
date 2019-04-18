@@ -182,7 +182,7 @@ h4{
   background-color: rgba(40, 40, 40, 0.6);
   z-index: 1;
 }
-.story img, .PhotoAccueil img{
+.story img, .PhotoAccueil img, .story{
   border-radius: 25px;
   opacity: 1;
 }
@@ -274,8 +274,9 @@ p#CapMar, p#storyThanos{
   border: solid;
   border-color: red;
   border-radius: 15px;
-  width: 140px;
-  height: 45px;
+  width: 220px;
+  height: 35px;
+  cursor: pointer;
 }
 
 .play2 :hover{
@@ -289,7 +290,7 @@ p#CapMar, p#storyThanos{
 .play2 h2{
   text-align: center;
   color: #CECE1E;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 /*Annimation ouverture*/
@@ -319,8 +320,8 @@ p#CapMar, p#storyThanos{
   border: solid;
   border-color: red;
   border-radius: 15px;
-  width: 250px;
-  height: 75px;
+  width: 450px;
+  height: 35px;
   cursor: pointer;
 }
 
