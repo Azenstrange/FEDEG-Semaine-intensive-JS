@@ -2,6 +2,10 @@
   font-family: "Strasua";
   src:url('../fonts/strasua.ttf');
 }
+@font-face {
+  font-family: "HomepageBaukasten-Book";
+  src:url('../fonts/HomepageBaukasten-Book.ttf');
+}
 
 body{
   margin:0;
