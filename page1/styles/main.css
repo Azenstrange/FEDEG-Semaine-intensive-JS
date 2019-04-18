@@ -104,6 +104,7 @@ p{
 }
 
 .textAndDemo p{
+  text-align: center;
   margin-top: -20px;
   line-height: 70px;
   font-size: 27px;
@@ -113,9 +114,6 @@ p{
 
 
 /*objectif*/
-
-
-
 .textAndDemo{
   display: flex;
   justify-content: space-around;
@@ -128,6 +126,7 @@ p{
   margin-right: 100px;
   z-index: 1;
   height: 450px;
+  box-shadow: 3px 3px 5px red;
 }
 
 .play{
@@ -234,6 +233,7 @@ section::after {
   }
 }*/
 
+/*Story*/
 .space{
   background-image: url('../images/space.jpg');
   background-position: top;
@@ -271,6 +271,7 @@ img{
   font-family: 'HomepageBaukasten', sans-serif;
   margin-top: 40px;
   margin-left: 120px;
+  text-shadow: 1.5px 1.5px 3px #56484c;
 }
 
 /*histoire Thanos*/
@@ -285,6 +286,7 @@ img#thanos{
   margin-bottom: 10px;
   width: 390px;
 	height: 220px;
+  box-shadow: 1px 1px 3px #001251;
 }
 
 div.thanos{
@@ -307,6 +309,7 @@ img#captain{
   margin-right: 50px;
   width: 260px;
   height: 195px;
+  box-shadow: 1px 1px 3px #001251;
 }
 
 div.captain{
@@ -321,9 +324,65 @@ p#CapMar, p#storyThanos{
   border-width: 2px;
   border-color: black;
   border-radius: 35px;
+  box-shadow: 1px 1px 3px black;
   padding: 13px;
 }
 
+/*Bande Annonce + Play2*/
+.button{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  height: 500px;
+}
+/*Play2*/
+.play2{
+  border: solid;
+  border-color: red;
+  border-radius: 15px;
+  width: 140px;
+  height: 45px;
+}
+
+.play2 :hover{
+  color: #03129a;
+}
+
+.play2 a{
+  text-decoration: none;
+}
+
+.play2 h2{
+  text-align: center;
+  color: #CECE1E;
+  font-size: 40px;
+}
+
+/*button Bande Annonce*/
+.annonceButton{
+  border: solid;
+  border-color: red;
+  border-radius: 15px;
+  width: 250px;
+  height: 75px;
+}
+
+.annonceButton :hover{
+  color: #03129a;
+}
+
+.annonceButton a{
+  text-decoration: none;
+}
+
+.annonceButton p{
+  font-family: 'Strasua', sans-serif;
+  text-align: center;
+  color: #CECE1E;
+  font-size: 30px;
+}
+
+/*Bande Annonce*/
 .bandeAnnonce{
   max-width: 100%;
   margin: 0 auto;

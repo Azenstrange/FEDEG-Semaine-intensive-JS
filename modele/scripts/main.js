@@ -1,5 +1,22 @@
-/* -------- Variables --------*/
-// Function
+/* Music play */
+let soundActive = document.querySelector(".soundActive")
+let soundtrack = document.querySelector(".soundtrack")
+let soundOff = 0
+soundActive.addEventListener(
+  'click',
+  function(){
+    if(soundOff == 0){
+      soundtrack.play()
+      soundOff = 1
+    }
+    else{
+      soundtrack.pause()
+      soundOff = 0
+    }
+  }
+)
+
+/* Functions */
 // Beginning of the game "Marvel Space" and button Play
 let gameOne = {
   display(borne){
@@ -72,16 +89,28 @@ let gameTwo ={
       starImg.setAttribute ("src", "images/logoStar_up.png")
       let starImg_two = document.createElement ('img')
       starImg_two.setAttribute ("src", "images/logoStar_down.png")
+      let characMarvel = document.createElement('img')
+      characMarvel.setAttribute ("src", "images/marvelart.png" )
+      let characThanos = document.createElement ('img')
+      characThanos.setAttribute("src", "images/thanos_attack.png")
+      let characShip = document.createElement ('img')
+      characShip.setAttribute("src", "images/spaceship-pixelart.png")
 
       // Attribution of classes
       starImg.classList.add("starDesign")
       starImg_two.classList.add("starDesign_two")
       charactersTitle.classList.add("charactersTitle")
+      characMarvel.classList.add("characMarvel")
+      characThanos.classList.add("characThanos")
+      characShip.classList.add("characShip")
       howPlay.classList.add("howPlay")
 
       // Iniatialisation
       pageTwo.appendChild(starImg)
       pageTwo.appendChild(charactersTitle)
+      pageTwo.appendChild(characMarvel)
+      pageTwo.appendChild(characThanos)
+      pageTwo.appendChild(characShip)
       pageTwo.appendChild(howPlay)
       divButton.appendChild(button)
       pageTwo.appendChild(divButton)
@@ -451,7 +480,7 @@ function gameOver() {
   }
 
 }
-function init() { //start the loot for the refresh
+function init() { //start the loop for the refresh
 
   var loop = setInterval(function() {
       if(!game.stopped) {
@@ -535,7 +564,15 @@ function update() {
       game.shield_reload --
     }
     setDamage()
-    /*set the level -> increase the number of ennemy per wave*/
+    let shield = document.querySelector('.player_style')
+    if((game.shield != 0)&&(!shield.classList.contains('shieldDesign')))
+    {
+      shield.classList.toggle('shieldDesign')
+    }
+    else if((game.shield == 0)&&(shield.classList.contains('shieldDesign')))
+    {
+      shield.classList.remove('shieldDesign')
+    }
     if((game.ship_nb%5==0)&&(game.frame_counter == 0)){
       game.level += 1
       game.frame_counter = 1
@@ -594,7 +631,7 @@ function lifeBar(){
     //gameOver()
   }*/
   let coeur = document.querySelectorAll('.life')
-  if(game.shield<0){
+  if(game.shield<=0){
     switch(game.life){
       case 1:
         coeur[0].style.display = "none"
