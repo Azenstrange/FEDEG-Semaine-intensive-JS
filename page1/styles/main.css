@@ -329,14 +329,16 @@ p#CapMar, p#storyThanos{
 .button{
   display: flex;
   justify-content: space-around;
+  margin-top: 50px;
+  height: 500px;
 }
 /*Play2*/
 .play2{
   border: solid;
   border-color: red;
   border-radius: 15px;
-  width: 450px;
-  margin: 0 auto;
+  width: 140px;
+  height: 45px;
 }
 
 .play2 :hover{
@@ -348,8 +350,33 @@ p#CapMar, p#storyThanos{
 }
 
 .play2 h2{
+  text-align: center;
   color: #CECE1E;
   font-size: 40px;
+}
+
+/*button Bande Annonce*/
+.annonceButton{
+  border: solid;
+  border-color: red;
+  border-radius: 15px;
+  width: 250px;
+  height: 75px;
+}
+
+.annonceButton :hover{
+  color: #03129a;
+}
+
+.annonceButton a{
+  text-decoration: none;
+}
+
+.annonceButton p{
+  font-family: 'Strasua', sans-serif;
+  text-align: center;
+  color: #CECE1E;
+  font-size: 30px;
 }
 
 /*Bande Annonce*/
