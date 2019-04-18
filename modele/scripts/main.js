@@ -272,13 +272,13 @@ class Thanos {
   }
   display(game){
     let shipImg = document.createElement('img')
-    shipImg.setAttribute('src', "images/marvelfire.png")
+    shipImg.setAttribute('src', "images/thanos_attack.png")
     shipImg.setAttribute('class', 'thanos')
     shipImg.classList.add('ship_image')
     game.borne.appendChild(shipImg)
   }
   update(game){
-    console.log("thanosupdate")
+
     let thanos = document.querySelector(`.thanos`)
     if(thanos != null){
       thanos.style.top = this.position_x +'%'
@@ -290,6 +290,16 @@ class Thanos {
     bullet.display(game) // display the bullet
     bullet.update(game.x,game) // start the update
     game.bullets.push(bullet) //put the bullet in the bullet list
+    game.x++
+    let bulletdos = new Bullet_Marvel(this.position_x-5, this.position_y-2, true) // create an bullet
+    bulletdos.display(game) // display the bullet
+    bulletdos.update(game.x,game) // start the update
+    game.bullets.push(bulletdos) //put the bullet in the bullet list
+    game.x++
+    let bullettres = new Bullet_Marvel(this.position_x-5, this.position_y+2, true) // create an bullet
+    bullettres.display(game) // display the bullet
+    bullettres.update(game.x,game) // start the update
+    game.bullets.push(bullettres) //put the bullet in the bullet list
     game.x++ // update the counter
   }
 
@@ -309,7 +319,7 @@ class Bullet_Marvel{
   display(game){
     if(!this.ennemi){
       let bullet = document.createElement('img')
-      bullet.setAttribute('src', "images/energy.png")
+      bullet.setAttribute('src', "images/energymarvel.png")
       bullet.setAttribute('id', game.x)
       bullet.classList.add(`bullet`)
       game.borne.appendChild(bullet)
@@ -342,6 +352,7 @@ class Bullet_Marvel{
         explosion.display(game)
         game.list_explo.push(explosion)
         game.score += 100
+        game.nb_marvel_bullet--
         ship_liste_query[i].style.display="none"
         if(game.compteur_ship > 0){
           game.compteur_ship -=1
@@ -360,13 +371,14 @@ class Bullet_Marvel{
           bulletstyle.style.display = "none"
           game.score += 2000
           thanos_hitpoint()
+          game.nb_marvel_bullet--
         }
     }
 
     }
 
   }
-  if((this.position_bullet_top>0) && (bulletstyle.style.display != "none")&& (!this.ennemi) )
+  if((this.position_bullet_top>=0) && (bulletstyle.style.display != "none")&& (!this.ennemi) )
   {
     this.position_bullet_top -= 5
     bulletstyle.style.top = this.position_bullet_top + '%'
@@ -377,9 +389,16 @@ class Bullet_Marvel{
     bulletstyle.style.top = this.position_bullet_top + '%'
     bulletstyle.style.left = this.position_bullet_left + '%'
   }
+  else if((this.position_bullet_top<0) && (bulletstyle.style.display != "none")&& (!this.ennemi)){
+    game.nb_marvel_bullet--
+    bulletstyle.style.display = "none"
+
+
+  }
   else
   {
     bulletstyle.style.display = "none"
+
   }
 }
 }
@@ -401,7 +420,7 @@ class Game{
     this.bullets = [], // a tab with all the active bullets
     this.list_ship = [], // a tab with all the active ennemi ships
     this.list_explo = [], // a list with all the explosion
-    this.shield = 6, // the value of the shield
+    this.shield = 3, // the value of the shield
     this.shield_reload = 600, //the time for the shield to refresh
     this.score = 0,
     this.progress = document.querySelector('#avancement'),
@@ -411,7 +430,8 @@ class Game{
     this.thanos_life = 6,
     this.thanos = new Thanos(),
     this.thanos_is_present = false,
-    this.frame_counter_second= 0
+    this.frame_counter_second= 0,
+    this.nb_marvel_bullet = 0
   }
 }
 /* -------- Initialisation --------*/
@@ -444,7 +464,6 @@ function config_menu() {
       function(){
           let display = document.querySelector(".gametwo")
           display.style.display = "none"
-          console.log("hello there")
           game = new Game()
           config()
       }
@@ -455,7 +474,7 @@ function config_menu() {
 //config() // let's start the game
 function setDamage(damage = 0){
   game.progress.setAttribute('value', game.shield )
-  game.progress.setAttribute('max', 6)
+  game.progress.setAttribute('max', 3)
   addEventListener('click', function(){
     game.progress.setAttribute('value', game.shield -= damage)
   })
@@ -478,7 +497,10 @@ function gameOver() {
   for(let i = 0; i < ship_liste_query.length;i++){
     ship_liste_query[i].style.display = "none"
   }
-
+  let bullet = document.querySelectorAll('.explosion')
+  for(let i = 0; i < bullet.length; i++){
+    bullet[i].style.display = "none"
+  }
 }
 function init() { //start the loop for the refresh
 
@@ -557,8 +579,8 @@ function update() {
     }
     /* update of the shield*/
     if(game.shield_reload < 0){
-      game.shield_reload = 300
-      game.shield = 6
+      game.shield_reload = 600
+      game.shield = 3
     }
     else {
       game.shield_reload --
@@ -577,11 +599,9 @@ function update() {
       game.level += 1
       game.frame_counter = 1
       game.nb_ennemi ++
-      console.log(game.level)
     }
     /*display thanos*/
-    if((game.score != 0)&&((game.score%2000 == 0)||((game.score-50)%2000 == 0))&&(!game.thanos_is_present)){
-      console.log(game.score%2000 == 0)
+    if((game.score != 0)&&((game.score%5000 == 0)||((game.score-50)%5000 == 0))&&(!game.thanos_is_present)){
       game.thanos.display(game)
       game.thanos_is_present = true
       game.thanos_life = 3
@@ -591,7 +611,7 @@ function update() {
     if(thanos != null)
     {
       /*change the position of thanos*/
-      if((game.ship_nb%3==0)&&(game.frame_counter_second== 0)){
+      if((game.frame_counter_second== 0)){
           let left_rand = Math.floor(Math.random()*(80)+10)
           game.thanos.position_y = left_rand
           game.thanos.fire(game)
@@ -599,6 +619,7 @@ function update() {
       }
       game.thanos.update(game)
     }
+
 }
 
 
@@ -615,7 +636,6 @@ function thanos_hitpoint(){
   else {
     game.thanos_life--
     game.frame_counter_second = 0
-    console.log(game.thanos_life)
   }
 }
 /*
@@ -691,7 +711,7 @@ window.addEventListener("keydown", function (event) {
       }
       break
     case 38:
-      if ((game.player.top_player > 0)) {
+      if ((game.player.top_player > 20)) {
         game.player.move("top")//movement to the top
 
       }
@@ -708,11 +728,14 @@ window.addEventListener("keydown", function (event) {
       }
       break
     case 32:
-      let bullet = new Bullet_Marvel(game.player.top_player-5, game.player.left_player, false) // create an bullet
-      bullet.display(game) // display the bullet
-      bullet.update(game.x,game) // start the update
-      game.bullets.push(bullet) //put the bullet in the bullet list
-      game.x++ // update the counter
+      if(game.nb_marvel_bullet < 7){
+        let bullet = new Bullet_Marvel(game.player.top_player-5, game.player.left_player, false) // create an bullet
+        bullet.display(game) // display the bullet
+        bullet.update(game.x,game) // start the update
+        game.bullets.push(bullet) //put the bullet in the bullet list
+        game.x++ // update the counter
+        game.nb_marvel_bullet++
+      }
       break
     default:
       return // Quit when this doesn't handle the key event.
