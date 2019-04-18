@@ -277,6 +277,7 @@ p#CapMar, p#storyThanos{
   width: 220px;
   height: 35px;
   cursor: pointer;
+  z-index: 3;
 }
 
 .play2 :hover{
