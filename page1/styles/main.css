@@ -1,9 +1,15 @@
-@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
-* {
+@font-face {
+  font-family: "Strasua";
+  src:url('../fonts/strasua.ttf');
+}
+@font-face {
+  font-family: "HomepageBaukasten-Book";
+  src:url('../fonts/HomepageBaukasten-Book.ttf');
+}
+*{
   margin: 0;
   padding: 0;
 }
-
 html {
   scroll-behavior: smooth;
 }
