@@ -179,8 +179,8 @@ h4{
 .story{
   margin-top: 60px;
   height: 1175px;
-  background-color: rgba(20, 20, 20, 0.7);
-  z-index: 4;
+  background-color: rgba(40, 40, 40, 0.6);
+  z-index: 1;
 }
 .story img, .PhotoAccueil img{
   border-radius: 25px;
