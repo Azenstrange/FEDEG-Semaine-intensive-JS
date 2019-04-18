@@ -420,18 +420,18 @@ class Game{
     this.bullets = [], // a tab with all the active bullets
     this.list_ship = [], // a tab with all the active ennemi ships
     this.list_explo = [], // a list with all the explosion
-    this.shield = 3, // the value of the shield
+    this.shield = 2, // the value of the shield
     this.shield_reload = 600, //the time for the shield to refresh
     this.score = 0,
     this.progress = document.querySelector('#avancement'),
-    this.level = 1,
-    this.nb_ennemi = 3,
-    this.frame_counter = 0,
-    this.thanos_life = 6,
-    this.thanos = new Thanos(),
-    this.thanos_is_present = false,
-    this.frame_counter_second= 0,
-    this.nb_marvel_bullet = 0
+    this.level = 1, // in what level we are
+    this.nb_ennemi = 3, // the number of ennemi per wave
+    this.frame_counter = 0, // to set when we start a new level
+    this.thanos_life = 6, // set the life of thanos
+    this.thanos = new Thanos(), // to create a thanos
+    this.thanos_is_present = false, // to to tell if we can spawn a new thanos
+    this.frame_counter_second= 0, // to allow thanos to move each time he is touch
+    this.nb_marvel_bullet = 0 // to limit the number of bullet of marvel
   }
 }
 /* -------- Initialisation --------*/
@@ -456,8 +456,37 @@ function config_menu() {
         button_page(buttonTwo)
 
     })
-    // Click on "Let's go" , the second page disapeared and the game is starting
   }
+
+  // The sentence appeared when click on "Let's go"
+  let visible = document.querySelector(".sentence") 
+  function start (){
+    setTimeout(function(){
+      visible.style.display="block"
+    }, 1000)
+  } 
+  function stop(){
+    setTimeout(function(){
+      visible.style.display="none"
+    }, 3000)
+  }
+// Timer counting down to 0
+  let timer = document.querySelector('.compteur')
+  let number = 3
+  function count(){
+    goTimer = setInterval(function(){
+      if (number > 0){
+        number--
+        timer.innerHTML = (number)
+        console.log("coucou")
+      } else {
+        config()
+        timer.style.display="none"
+        clearInterval(goTimer);
+      }
+    },1000)
+  } 
+ // The game is starting after the timer
   function button_page(button){
     button.addEventListener(
       'click',
@@ -465,16 +494,19 @@ function config_menu() {
           let display = document.querySelector(".gametwo")
           display.style.display = "none"
           game = new Game()
-          config()
+          start()
+          stop()
+          count()
+          
       }
-      )
+    )
   }
 
 //let game = new Game() // let's start the game
 //config() // let's start the game
 function setDamage(damage = 0){
   game.progress.setAttribute('value', game.shield )
-  game.progress.setAttribute('max', 3)
+  game.progress.setAttribute('max', 2)
   addEventListener('click', function(){
     game.progress.setAttribute('value', game.shield -= damage)
   })
@@ -580,7 +612,7 @@ function update() {
     /* update of the shield*/
     if(game.shield_reload < 0){
       game.shield_reload = 600
-      game.shield = 3
+      game.shield = 2
     }
     else {
       game.shield_reload --
