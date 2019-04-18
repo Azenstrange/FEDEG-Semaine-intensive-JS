@@ -107,7 +107,7 @@ p{
   text-align: center;
   margin-top: -20px;
   line-height: 70px;
-  font-size: 27px;
+  font-size: 26px;
   width: 500px;
   color: white;
 }
@@ -126,7 +126,7 @@ p{
   margin-right: 100px;
   z-index: 1;
   height: 450px;
-  box-shadow: 2px 2px 4px red;
+  box-shadow: 0px 4px 6px red;
 }
 
 .play{
@@ -155,89 +155,13 @@ p{
   font-size: 40px;
 }
 
-/*arrow scroll*/
-/* section {
-  position: relative;
-  width: 0 auto;
-  height: 20px;
-}
-section::after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  content: '';
-  width: 100%;
-  height: 80%;
-}
-
-.demo a {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  z-index: 2;
-  display: inline-block;
-  -webkit-transform: translate(0, -50%);
-  transform: translate(0, -50%);
-  color: red;
-  font : normal 400 20px/1 'Josefin Sans', sans-serif;
-  letter-spacing: .1em;
-  text-decoration: none;
-  transition: opacity .3s;
-}
-.demo a:hover {
-  opacity: .5;
-}
-
-#section a {
-  padding-top: 70px;
-}
-#section a span {
-  position: absolute;
-  top: 360px;
-  left: 50%;
-  width: 24px;
-  height: 24px;
-  margin-left: -12px;
-  border-left: 1px solid red;
-  border-bottom: 1px solid red;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  -webkit-animation: sdb05 1.5s infinite;
-  animation: sdb05 1.5s infinite;
-  box-sizing: border-box;
-}
-@-webkit-keyframes sdb05 {
-  0% {
-    -webkit-transform: rotate(-45deg) translate(0, 0);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: rotate(-45deg) translate(-20px, 20px);
-    opacity: 0;
-  }
-}
-@keyframes sdb05 {
-  0% {
-    transform: rotate(-45deg) translate(0, 0);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(-45deg) translate(-20px, 20px);
-    opacity: 0;
-  }
-}*/
 
 /*Story*/
 .space{
-  background-image: url('../images/space.jpg');
+  background-image: url('../images/Avengers1.png');
   background-position: top;
-  background-size: 1388px 874px;
+  margin-top: -40px;
+  background-size: 1688px 1174px;
   background-repeat: no-repeat;
   z-index: 0;
   margin-top: -60px;
@@ -248,28 +172,26 @@ h4{
   font-family: 'Strasua', 'Arial', sans-serif;
   width: 1100px;
   text-align: center;
-  color: red;
+  color: #001ac6;
   font-size: 50px;
   padding-top: 50px;
 }
-
 .story{
   margin-top: 60px;
-  background-color: rgba(255, 255, 255, 0.5);
+  height: 1175px;
+  background-color: rgba(20, 20, 20, 0.7);
   z-index: 1;
-  border-radius: 5%;
 }
-
 img{
   border-radius: 25px;
   opacity: 1;
 }
 
 .story h3{
-  color:black;
+  color: #bebebe;
   font-size: 30px;
   font-family: 'HomepageBaukasten', sans-serif;
-  margin-top: 40px;
+  margin-top: 60px;
   margin-left: 120px;
   text-shadow: 1.5px 1.5px 3px #56484c;
 }
@@ -278,7 +200,8 @@ img{
 .histT{
   display: flex;
   justify-content: space-around;
-  margin-bottom: 60px;
+  margin-top: 50px;
+  margin-bottom: 180px;
 }
 
 img#thanos{
@@ -286,7 +209,7 @@ img#thanos{
   margin-bottom: 10px;
   width: 390px;
 	height: 220px;
-  box-shadow: 1px 1px 3px #001251;
+  box-shadow: 0px 4px 6px #03129a;
 }
 
 div.thanos{
@@ -300,7 +223,7 @@ div.thanos{
   display: flex;
   justify-content: space-around;
   flex-direction: row-reverse;
-  margin-top: -40px;
+  margin-top: -10px;
 }
 
 img#captain{
@@ -309,7 +232,7 @@ img#captain{
   margin-right: 50px;
   width: 260px;
   height: 195px;
-  box-shadow: 1px 1px 3px #001251;
+  box-shadow: 0px 4px 6px #03129a;
 }
 
 div.captain{
@@ -319,12 +242,15 @@ div.captain{
 }
 
 p#CapMar, p#storyThanos{
+  text-align: center;
   line-height: 25px;
+  color: black;
+  background-color: rgba(200, 200, 200, 0.3);
   border-style: solid;
   border-width: 2px;
   border-color: black;
   border-radius: 35px;
-  box-shadow: 1px 1px 3px black;
+  box-shadow: 1px 1px 3px #03129a;
   padding: 13px;
 }
 
