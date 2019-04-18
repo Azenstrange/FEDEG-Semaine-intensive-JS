@@ -276,9 +276,10 @@ class Ship{
 /*---------Thanos, the boss ----------*/
 class Thanos {
   constructor() {
-    this.position_x = 10,
+    this.position_x = 10,  // origin point of thanos
     this.position_y = 50
   }
+  /* display thanos*/
   display(game){
     let shipImg = document.createElement('img')
     shipImg.setAttribute('src', "../images/thanos_attack.gif")
@@ -286,14 +287,15 @@ class Thanos {
     shipImg.classList.add('ship_image')
     game.borne.appendChild(shipImg)
   }
+  /*update Thanos*/
   update(game){
-
     let thanos = document.querySelector(`.thanos`)
     if(thanos != null){
       thanos.style.top = this.position_x +'%'
       thanos.style.left = this.position_y + '%'
     }
   }
+  /*make thanos fire 3 bullets*/
   fire(game){
     let bullet = new Bullet_Marvel(this.position_x-5, this.position_y, true) // create an bullet
     bullet.display(game) // display the bullet
@@ -354,7 +356,7 @@ class Bullet_Marvel{
       let top_p = game.player.top_player
       let left_p = game.player.left_player
       let left= parseInt(ship_liste_query[i].style.left.substring(0,ship_liste_query[i].style.left.length-1))
-
+      /* ship collision with bullets */
       if((!this.ennemi)&&(ship_liste_query[i].style.display != "none")&&(collision_check(this.position_bullet_top,this.position_bullet_left,top, left))){
         bulletstyle.style.display = "none"
         let explosion = new Explosion(top,left)
@@ -368,11 +370,13 @@ class Bullet_Marvel{
         }
       ship_liste_query[i].style.top = "100%"
       }
+      /*player collision with bullets*/
       if ((this.ennemi)&&(bulletstyle.style.display != "none")&&(collision_check(this.position_bullet_top,this.position_bullet_left,top_p, left_p))) {
         bulletstyle.style.display = "none"
         setDamage(1)
         lifeBar()
       }
+      /*thanos collision with bullets*/
       if(thanos != null){
         let left_t= parseInt(thanos.style.left.substring(0,thanos.style.left.length-1))
         let top_t= parseInt(thanos.style.top.substring(0,thanos.style.top.length-1))
@@ -401,13 +405,10 @@ class Bullet_Marvel{
   else if((this.position_bullet_top<0) && (bulletstyle.style.display != "none")&& (!this.ennemi)){
     game.nb_marvel_bullet--
     bulletstyle.style.display = "none"
-
-
   }
   else
   {
     bulletstyle.style.display = "none"
-
   }
 }
 }
