@@ -22,10 +22,3 @@ close.addEventListener(
     div2.style.transition= "all 3s"
   }
 )
-
-$(function() {
-  $('a[href*=#]').on('click', function(e) {
-    e.preventDefault();
-    $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
-  });
-});
