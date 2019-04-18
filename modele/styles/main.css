@@ -203,5 +203,17 @@ progress{
   cursor: pointer;
 }
 .thanos{
+}
+/* test sentence */
+.sentence{
+  font-size: 20px;
+  color: #FD0000;
+  display: none;
+}
 
+/* test compteur */
+.compteur{
+  font-size: 20px;
+  color: #FD0000;
+  display: block;
 }
