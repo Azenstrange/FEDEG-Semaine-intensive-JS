@@ -14,22 +14,22 @@ html {
   scroll-behavior: smooth;
 }
 
-section#arrow1{
+div#arrow1{
   position: relative;
   top: 10px;
 }
 
-section#arrow2 {
+div#arrow2 {
   position: relative;
   bottom: 20px;
 }
 
-section#arrow3{
+div#arrow3{
   position: relative;
   top: 50px;
 }
 
-section::after {
+div::after {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -256,7 +256,7 @@ p{
   background-image: url('../images/etoiles.png');
   background-position: top;
   margin-top: -40px;
-  background-size: 1688px 1174px;
+  background-size: 1688px 1179px;
   background-repeat: no-repeat;
   z-index: 3;
   margin-top: -60px;
@@ -271,12 +271,14 @@ h4{
   font-size: 50px;
   padding-top: 50px;
 }
+
 .story{
   margin-top: 60px;
   height: 1175px;
   background-color: rgba(20, 20, 20, 0.4);
   z-index: 1;
 }
+
 .story img, .PhotoAccueil img, .story{
   border-radius: 25px;
   opacity: 1;
@@ -356,7 +358,7 @@ p#CapMar, p#storyThanos{
 /*CONTAINER2*/
 .FondEtoile2{
   background-image:url("../images/etoiles.png");
-  margin-top: -51px;
+  margin-top: -46px;
   height: 950px;
 }
 
