@@ -1,0 +1,461 @@
+@font-face {
+  font-family: "Strasua";
+  src:url('../fonts/strasua.ttf');
+}
+@font-face {
+  font-family: "HomepageBaukasten-Book";
+  src:url('../fonts/HomepageBaukasten-Book.ttf');
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+section#arrow1{
+  position: relative;
+  top: 10px;
+}
+
+section#arrow2 {
+  position: relative;
+  bottom: 20px;
+}
+
+section#arrow3{
+  position: relative;
+  top: 50px;
+}
+
+section::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: '';
+  margin-top: -200px;
+  background: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,.8) 80%,rgba(0,0,0,.8) 100%);
+  background: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.8) 80%,rgba(0,0,0,.8) 100%);
+}
+
+
+.arrow a {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  z-index: 2;
+  display: inline-block;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  color: red;
+  font : normal 400 20px/1 'Josefin Sans', sans-serif;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.arrow a:hover {
+  opacity: .5;
+}
+
+#arrow1 a, #arrow3 a, #arrow3 a {
+  padding-top: 60px;
+}
+#arrow1 a span, #arrow2 a span, #arrow3 a span {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb04 2s infinite;
+  animation: sdb04 2s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes sdb04 {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+  20% {
+    -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+  }
+  40% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+}
+@keyframes sdb04 {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+  20% {
+    transform: rotate(-45deg) translate(-10px, 10px);
+  }
+  40% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+}
+
+.container{
+  height: 100%;
+  margin: 0 auto;
+  width: 1100px;
+}
+
+.container2{
+  height: 100%;
+  margin: 0 auto;
+  width: 1100px;
+}
+
+h1, h2{
+  font-family: 'Strasua', 'Arial', sans-serif;
+  color: red;
+}
+
+h3{
+  color: red;
+  font-family: 'HomepageBaukasten', 'Arial', sans-serif;
+}
+
+p{
+  text-align: justify;
+  font-family: 'HomepageBaukasten', 'Arial', sans-serif;
+}
+
+
+/* HEADER */
+
+.header{
+  width: 100%;
+  background-color: #010A3C;
+  height: 150px;
+  display: flex;
+  justify-content: space-around;
+  position:absolute;
+  z-index: 1;
+  margin-top: 0px;
+  opacity: 0.9;
+}
+
+.header img{
+  width: 150px;
+  height: 150px;
+  padding-left: 40px;
+  margin-bottom: 40px;
+  opacity: 1;
+}
+
+.MarvelSpace{
+  font-size: 80px;
+}
+
+.needYou{
+  font-size: 22px;
+  margin-top: 60px;
+  margin-right: 100px;
+  padding-right: 10px;
+}
+
+.TitleAndPicture{
+  margin-top: 17px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.TheGame{
+  margin-left: 340px;
+  margin-top: -10px;
+  color: #CECE1E;
+}
+
+.PhotoAccueil img{
+  width: 100%;
+  position: relative;
+  margin-top: 0px;
+  z-index: 0;
+}
+
+/*CONTAINER*/
+.FondEtoile{
+  background-image:url("../images/etoiles.png");
+  margin-top: -200px;
+  height: 950px;
+}
+
+
+.goal h3{
+  font-family: 'Strasua', 'Arial', sans-serif;
+  text-align: center;
+  color: red;
+  width: 1100px;
+  font-size: 50px;
+  margin-top: 170px;
+  padding-top: 100px;
+}
+
+.textAndDemo p{
+  text-align: center;
+  margin-top: -20px;
+  line-height: 70px;
+  font-size: 26px;
+  width: 500px;
+  color: white;
+}
+
+
+/*objectif*/
+.textAndDemo{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-top: 50px;
+  height: 600px;
+}
+
+#demo{
+  margin-right: 100px;
+  z-index: 1;
+  height: 450px;
+  box-shadow: 0px 4px 6px red;
+}
+
+.play{
+  text-align: center;
+  border: solid;
+  border-color: red;
+  border-radius: 15px;
+  width: 450px;
+  margin: 0 auto;
+  margin-top: -90px;
+  margin-bottom: 70px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.play :hover{
+  color: #03129a;
+}
+
+.play a{
+  text-decoration: none;
+}
+
+.play h2{
+  color: #CECE1E;
+  font-size: 40px;
+}
+
+
+/*Story*/
+.space{
+  background-image: url('../images/etoiles.png');
+  background-position: top;
+  margin-top: -40px;
+  background-size: 1688px 1174px;
+  background-repeat: no-repeat;
+  z-index: 3;
+  margin-top: -60px;
+}
+
+h4{
+  margin-top: 0px;
+  font-family: 'Strasua', 'Arial', sans-serif;
+  width: 1100px;
+  text-align: center;
+  color: red;
+  font-size: 50px;
+  padding-top: 50px;
+}
+.story{
+  margin-top: 60px;
+  height: 1175px;
+  background-color: rgba(20, 20, 20, 0.4);
+  z-index: 1;
+}
+.story img, .PhotoAccueil img, .story{
+  border-radius: 25px;
+  opacity: 1;
+  box-shadow: 0px 4px 6px #03129a;
+}
+
+.story h3{
+  color: #03129a;
+  font-size: 30px;
+  font-family: 'HomepageBaukasten', sans-serif;
+  margin-top: 60px;
+  margin-left: 120px;
+}
+
+/*histoire Thanos*/
+.histT{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  margin-bottom: 180px;
+}
+
+img#thanos{
+  margin-top: 90px;
+  margin-bottom: 10px;
+  width: 390px;
+	height: 220px;
+  border: solid;
+  border-width: 2px;
+  box-shadow: 0px 4px 6px #03129a;
+}
+
+div.thanos{
+  width: 550px;
+  height: 20px;
+  margin-top: 30px;
+}
+
+/*histoire Captain Marvel*/
+.histC{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+  margin-top: -10px;
+}
+
+img#captain{
+  margin-top: 85px;
+  margin-bottom: 35px;
+  margin-right: 50px;
+  width: 260px;
+  height: 195px;
+  border: solid;
+  border-width: 2px;
+  box-shadow: 0px 4px 6px #03129a;
+}
+
+div.captain{
+  width: 500px;
+  height: 20px;
+  margin-top: 65px;
+}
+
+p#CapMar, p#storyThanos{
+  text-align: center;
+  line-height: 25px;
+  color: white;
+  background-color: rgba(40, 40, 40, 0.3);
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  border-radius: 35px;
+  box-shadow: 1px 1px 3px #03129a;
+  padding: 13px;
+}
+
+/*CONTAINER2*/
+.FondEtoile2{
+  background-image:url("../images/etoiles.png");
+  margin-top: -51px;
+  height: 950px;
+}
+
+/*Bande Annonce + Play2*/
+.button{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  padding-top: 50px;
+  height: 150px;
+}
+/*Play2*/
+.play2{
+  border: solid;
+  border-color: red;
+  border-radius: 15px;
+  width: 220px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.play2 :hover{
+  color: #03129a;
+}
+
+.play2 a{
+  text-decoration: none;
+}
+
+.play2 h2{
+  text-align: center;
+  color: #CECE1E;
+  font-size: 30px;
+}
+
+/*Annimation ouverture*/
+.div1{
+  width: 866px;
+  height: 250px;
+  margin-left: 120px;
+  background-image: url("../images/affiche1.png");
+  background-position: center;
+  position: absolute;
+  z-index: 2;
+}
+
+.div2{
+  width: 866px;
+  height: 250px;
+  margin-top: -240px;
+  margin-left: 120px;
+  background-image: url("../images/affiche2.png");
+  background-position: center;
+  position: absolute;
+  z-index: 2;
+}
+
+/*button Bande Annonce*/
+.annonceButton{
+  border: solid;
+  border-color: red;
+  border-radius: 15px;
+  width: 450px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.annonceButton :hover{
+  color: #03129a;
+}
+
+.annonceButton p{
+  font-family: 'Strasua', sans-serif;
+  text-align: center;
+  color: #CECE1E;
+  font-size: 30px;
+}
+
+/*button close*/
+img.close{
+  width: 20px;
+  height: 20px;
+  padding-top: 220px;
+  padding-left: 825px;
+  cursor: pointer;
+}
+
+/*Bande Annonce*/
+.bandeAnnonce{
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+video#bandeAnnonce{
+  width: 854px;
+  height: 480px;
+  margin-top: 0px;
+  margin-left: 120px;
+  border-color: black;
+  border-style: solid;
+  z-index: 0;
+}

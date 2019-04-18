@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title> Captain Space </title>
+    <meta name="description" content="video game of Captain Marvel">
+    <link rel="icon" type="image/png" href="../images/marvelart.png" />
+    <link rel="stylesheet" href="../styles/page_1.css">
+  </head>
+  <body>
+    <container>
+      <div class="container_interface">
+        <div class ="score">
+              <p class="soundActive">Music</p>
+          <h2>Score :</h2>
+        </div>
+        <div class="vie">
+          <h2>Life</h2>
+          <div class="heart_main">
+            <img src="../images/heartLife_one.png" alt="heart" class= "life"></img>
+            <img src="../images/heartLife_two.png" alt="heart" class= "life"></img>
+            <img src="../images/heartLife_three.png" alt="heart" class= "life"></img>
+          </div>
+          <div class="shield">
+              <progress id="avancement" value="" max=""></progress>
+          </div>
+        </div>
+      </div>
+      <div class="borne">
+      </div>
+    </container>
+    <div class="starting">
+      <p class="sentence">We can do it together captain! Do not let them pass!</p>
+    <p class="compteur"></p>
+  </div>
+    <audio class="soundtrack" loop src="../audio/Mainmusic.mp3"></audio>
+  <script type="text/javascript" src="../scripts/page_1.js"></script>
+  </body>
+</html>
