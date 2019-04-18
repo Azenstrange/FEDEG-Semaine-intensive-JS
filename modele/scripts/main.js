@@ -255,7 +255,7 @@ class Ship{
       else if((this.top_ship==99)&& (ship_image.style.display != "none") && (game.compteur_ship > 0)) {
         this.top_ship += 1
         game.compteur_ship -=1
-        game.score -= 50
+        game.score -= 150
       }
       else {
 
@@ -272,7 +272,7 @@ class Thanos {
   }
   display(game){
     let shipImg = document.createElement('img')
-    shipImg.setAttribute('src', "images/thanos_attack.png")
+    shipImg.setAttribute('src', "images/thanos_attack.gif")
     shipImg.setAttribute('class', 'thanos')
     shipImg.classList.add('ship_image')
     game.borne.appendChild(shipImg)
@@ -351,7 +351,7 @@ class Bullet_Marvel{
         let explosion = new Explosion(top,left)
         explosion.display(game)
         game.list_explo.push(explosion)
-        game.score += 100
+        game.score += 200
         game.nb_marvel_bullet--
         ship_liste_query[i].style.display="none"
         if(game.compteur_ship > 0){
@@ -369,7 +369,7 @@ class Bullet_Marvel{
         let top_t= parseInt(thanos.style.top.substring(0,thanos.style.top.length-1))
         if((!this.ennemi)&&(bulletstyle.style.display != "none")&&((collision_check(this.position_bullet_top,this.position_bullet_left, top_t, left_t)))){
           bulletstyle.style.display = "none"
-          game.score += 2000
+          game.score += 500
           thanos_hitpoint()
           game.nb_marvel_bullet--
         }
@@ -619,11 +619,17 @@ function update() {
       }
       game.thanos.update(game)
     }
-
+    score_update()
+    if(game.score < 0){
+      gameOver()
+    }
 }
 
 
-
+function score_update(){
+  let score = document.querySelector('.score h2')
+  score.innerHTML = "Score : " + game.score
+}
 function thanos_hitpoint(){
   if(game.thanos_life <= 1)
   {
