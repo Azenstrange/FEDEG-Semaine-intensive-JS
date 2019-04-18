@@ -386,19 +386,50 @@ function config_menu() {
         button_page(buttonTwo)
 
     })
-    // Click on "Let's go" , the second page disapeared and the game is starting
   }
+
+  // The sentence appeared when click on "Let's go"
+  let visible = document.querySelector(".sentence") 
+  function start (){
+    setTimeout(function(){
+      visible.style.display="block"
+    }, 1000)
+  } 
+  function stop(){
+    setTimeout(function(){
+      visible.style.display="none"
+    }, 3000)
+  }
+// Timer counting down to 0
+  let timer = document.querySelector('.compteur')
+  let number = 3
+  function count(){
+    goTimer = setInterval(function(){
+      if (number > 0){
+        number--
+        timer.innerHTML = (number)
+        console.log("coucou")
+      } else {
+        config()
+        timer.style.display="none"
+        clearInterval(goTimer);
+      }
+    },1000)
+  } 
+ // The game is starting after the timer
   function button_page(button){
     button.addEventListener(
       'click',
       function(){
           let display = document.querySelector(".gametwo")
           display.style.display = "none"
-          console.log("hello there")
           game = new Game()
-          config()
+          start()
+          stop()
+          count()
+          
       }
-      )
+    )
   }
 
 //let game = new Game() // let's start the game
