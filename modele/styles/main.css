@@ -1,10 +1,6 @@
-@import url(//db.onlinewebfonts.com/c/a720be397d5933621aa9d875d9bec0ce?family=Strasua);
-
-@font-face {font-family: "Strasua";
-    src: url("//db.onlinewebfonts.com/t/a720be397d5933621aa9d875d9bec0ce.eot");
-    src: url("//db.onlinewebfonts.com/t/a720be397d5933621aa9d875d9bec0ce.eot?#iefix") format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/a720be397d5933621aa9d875d9bec0ce.woff2") format("woff2"),
-    url("//db.onlinewebfonts.com/t/a720be397d5933621aa9d875d9bec0ce.woff") format("woff"),
+@font-face {
+  font-family: "Strasua";
+  src:url('../fonts/strasua.ttf');
 }
 
 body{
@@ -13,7 +9,7 @@ body{
   height: 100%;
   font-family: "Strasua","Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
-  color: #4E00FD;
+  color: #2700FF;
   overflow: hidden;
   background: url("../images/Captain2.jpeg");
   background-repeat: no-repeat;
@@ -22,12 +18,9 @@ body{
 }
 .finalscore_block{
   margin-top: 50%;
-  width: 100%;
-  background-color: white;
 }
 .finalscore{
-  top: 50%;
-  left: 50%;
+  height: 90px;
   font-size: 50px;
   color: #FD0000;
 }
@@ -46,7 +39,7 @@ body{
   width: 140px;
 }
 .score h2{
-  color: blue;
+  color: #2700FF;
 
 }
 .container_interface{
@@ -142,9 +135,9 @@ progress{
 .buttonPlay{
   display: flex;
   justify-content: center;
-  color: #2810E0;
+  color: #2700FF;
   text-decoration: none;
-  border: 3px solid #2810E0;
+  border: 3px solid #2700FF;
   padding: 0px 50px;
   width: 30px;
   margin: 90px auto;
@@ -198,9 +191,9 @@ flex-direction: column;
   display: flex;
   justify-content: center;
  /* font-size: 20px; */
-  color: #2810E0;
+  color: #2700FF;
   text-decoration: none;
-  border: 3px solid #2810E0;
+  border: 3px solid #2700FF;
   padding: 10px 20px;
   width: 70px;
   margin: 30px auto;
@@ -218,6 +211,8 @@ flex-direction: column;
 /* Music */
 .soundActive{
   cursor: pointer;
+  color: #FFD700;
+  font-size: 20px;
 }
 .thanos{
 }
