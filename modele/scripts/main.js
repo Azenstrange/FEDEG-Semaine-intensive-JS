@@ -95,6 +95,10 @@ let gameTwo ={
       characThanos.setAttribute("src", "images/thanos_attack.png")
       let characShip = document.createElement ('img')
       characShip.setAttribute("src", "images/spaceship-pixelart.png")
+      let keyboard = document.createElement ('img')
+      keyboard.setAttribute('src', 'images/keyboard.png')
+      let space = document.createElement ('img')
+      space.setAttribute('src', 'images/space.png')
 
       // Attribution of classes
       starImg.classList.add("starDesign")
@@ -104,6 +108,9 @@ let gameTwo ={
       characThanos.classList.add("characThanos")
       characShip.classList.add("characShip")
       howPlay.classList.add("howPlay")
+      keyboard.classList.add("keyboard")
+      space.classList.add("space")
+
 
       // Iniatialisation
       pageTwo.appendChild(starImg)
@@ -112,6 +119,8 @@ let gameTwo ={
       pageTwo.appendChild(characThanos)
       pageTwo.appendChild(characShip)
       pageTwo.appendChild(howPlay)
+      pageTwo.appendChild(keyboard)
+      pageTwo.appendChild(space)
       divButton.appendChild(button)
       pageTwo.appendChild(divButton)
       pageTwo.appendChild(starImg_two)
@@ -459,12 +468,12 @@ function config_menu() {
   }
 
   // The sentence appeared when click on "Let's go"
-  let visible = document.querySelector(".sentence") 
+  let visible = document.querySelector(".sentence")
   function start (){
     setTimeout(function(){
       visible.style.display="block"
     }, 1000)
-  } 
+  }
   function stop(){
     setTimeout(function(){
       visible.style.display="none"
@@ -472,7 +481,8 @@ function config_menu() {
   }
 // Timer counting down to 0
   let timer = document.querySelector('.compteur')
-  let number = 3
+  let container_display = document.querySelector('.container_interface')
+  let number = 4
   function count(){
     goTimer = setInterval(function(){
       if (number > 0){
@@ -482,10 +492,12 @@ function config_menu() {
       } else {
         config()
         timer.style.display="none"
+        console.log(container_display.style.display)
+        container_display.style.display ="flex"
         clearInterval(goTimer);
       }
     },1000)
-  } 
+  }
  // The game is starting after the timer
   function button_page(button){
     button.addEventListener(
@@ -497,7 +509,7 @@ function config_menu() {
           start()
           stop()
           count()
-          
+
       }
     )
   }
@@ -550,7 +562,7 @@ function resetship(){
   for (let v = 0; v < game.nb_ennemi; v++) {
     //positionShip, fire,top_ship = 25, bot_ship = 10, right_ship = 50, left_ship = 45
     let top_rand = Math.floor(Math.random()*(10)+0)
-    let left_rand = Math.floor(Math.random()*(80)+10) // to set the position of new ships but random!
+    let left_rand = Math.floor(Math.random()*(90)) // to set the position of new ships but random!
     let rand_ship = Math.floor(Math.random()*7)
     let rand_fire = Math.floor(Math.random()*2)
     let fire_bool = false
@@ -766,7 +778,7 @@ window.addEventListener("keydown", function (event) {
       }
       break
     case 32:
-      if(game.nb_marvel_bullet < 7){
+      if(game.nb_marvel_bullet < 4){
         let bullet = new Bullet_Marvel(game.player.top_player-5, game.player.left_player, false) // create an bullet
         bullet.display(game) // display the bullet
         bullet.update(game.x,game) // start the update
