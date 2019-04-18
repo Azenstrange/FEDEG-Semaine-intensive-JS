@@ -166,6 +166,10 @@ progress{
   height: 80px;
   margin: 0px 30px;
 }
+.keyboard , .space{
+  height: 80px;
+  margin: 0px 20px;
+}
 
 .characShip{
   height: 40px;
@@ -173,7 +177,11 @@ progress{
 }
 
 .howPlay{
-  margin: 76px 0px;
+  margin-top: 76px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+
   padding: 30px;
 }
 .starting{

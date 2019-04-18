@@ -95,6 +95,10 @@ let gameTwo ={
       characThanos.setAttribute("src", "images/thanos_attack.png")
       let characShip = document.createElement ('img')
       characShip.setAttribute("src", "images/spaceship-pixelart.png")
+      let keyboard = document.createElement ('img')
+      keyboard.setAttribute('src', 'images/keyboard.png')
+      let space = document.createElement ('img')
+      space.setAttribute('src', 'images/space.png')
 
       // Attribution of classes
       starImg.classList.add("starDesign")
@@ -104,6 +108,9 @@ let gameTwo ={
       characThanos.classList.add("characThanos")
       characShip.classList.add("characShip")
       howPlay.classList.add("howPlay")
+      keyboard.classList.add("keyboard")
+      space.classList.add("space")
+
 
       // Iniatialisation
       pageTwo.appendChild(starImg)
@@ -112,6 +119,8 @@ let gameTwo ={
       pageTwo.appendChild(characThanos)
       pageTwo.appendChild(characShip)
       pageTwo.appendChild(howPlay)
+      pageTwo.appendChild(keyboard)
+      pageTwo.appendChild(space)
       divButton.appendChild(button)
       pageTwo.appendChild(divButton)
       pageTwo.appendChild(starImg_two)
